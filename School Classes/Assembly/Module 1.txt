@@ -1,0 +1,45 @@
+Lane Pollock
+Module 1 notes for Assembly
+
+----------------------------
+BOOLEAN LOGIC
+	true(1), false(0)
+	
+	and gates are two transistors in the same line
+	or gates use parallel transistors
+	not gates use an additional gate to negate the current basically
+		(visually)
+	and gate - looks like a big D
+	or gate - spaceship
+	not gate - triangle with dot
+
+NAND AND NOR GATES
+	and gate then not gate - results in nand gate, which looks like a D with a dot
+	and with inverted output
+
+	or and then not - results in nor gate - 
+	
+	-these are called universal gates
+
+WE CAN BUILD ANY OPERATION WITH ONLY USING NAND GATES
+
+PROOFS
+	1)NOT(x) = (x NAND x) - make not by using a nand gate with the same input 
+	2)(x AND y) = NOT(x NAND y)
+
+BUILDING AN AND GATE
+		with the universal gates, if you short circuit the inputs, it becomes invert
+	take a NAND GATE then negate it with a short circuited nand gate?
+	
+	short circuit by outputting the output of the first to both the transistors of the next 		gate nand gate
+	
+	-code-
+
+	CHIP And{
+		IN a, b;
+		OUT out;
+		PARTS:
+			Nand (a=a, b=b, out=w);
+			Nand (a=w, b=w, out=out);
+	}
+			
