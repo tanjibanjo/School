@@ -27,6 +27,9 @@ PROOFS
 	1)NOT(x) = (x NAND x) - make not by using a nand gate with the same input 
 	2)(x AND y) = NOT(x NAND y)
 
+HARDWARE DESIGN LANGUAGE
+	
+
 BUILDING AN AND GATE
 		with the universal gates, if you short circuit the inputs, it becomes invert
 	take a NAND GATE then negate it with a short circuited nand gate?
