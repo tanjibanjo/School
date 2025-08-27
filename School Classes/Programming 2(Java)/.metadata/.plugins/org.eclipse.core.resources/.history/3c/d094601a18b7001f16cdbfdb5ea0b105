@@ -1,0 +1,24 @@
+package lab2;
+
+public class PrototypeDriver {
+	public static void main(String[] args) {
+		//load cache
+		CharacterStore.loadCache();
+		
+		//local variables
+		//clones of our characters
+		GameCharacter clonedCharacter1;
+		GameCharacter clonedCharacter2;
+		
+		//initialize clones and call methods
+		clonedCharacter1 = CharacterStore.getCharacter("Warrior");
+		clonedCharacter2 = CharacterStore.getCharacter("Mage");
+		
+		//output information
+		System.out.println("Character : " + clonedCharacter1.characterType);
+		clonedCharacter1.play();
+		System.out.println("Character : " + clonedCharacter2.characterType);
+		clonedCharacter2.play();
+	}
+
+}

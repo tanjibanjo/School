@@ -1,0 +1,87 @@
+Lane Pollock
+
+- notes on the first two videos for the Assembly Language Programming class
+
+-------------
+ORIGINS
+	-abacus was first operating 'calculator'
+		-astrolade - calculate location at sea
+		-'computer' was a person who did things with calculations
+		-step reckoner was first machine that could do add/sub/div/mult in automated way
+	
+	-used to use sq rt tables 
+		-military was one of the first to incorporate these computers and maths
+		-range tables told them the angles for canons for distance
+	
+	-Difference engine (Charles Babbage)
+		-could compute polynomials
+		-abandoned but eventually finished in 1991
+
+	-Analytical engine
+		-basically the first idea of a general computer
+		-idea was never built and way ahead of its time
+		-Ada Lovelace wrote hypothetical programs for the engine
+			-worlds first programmer?
+	
+	-US Govt needed help to complete the census because America was too big
+		-Herman Hollerith(?) used punch cards
+		-10x faster than manual completion
+		-created a tabulating company, later merged with others to make IBM
+-------------
+EVOLVING COMPUTERS
+	-one of the largest computers built was the harvard mark 1
+	-built for the allies in ww2
+	-hundreds of miles of wire lol
+		-ran sims for manhatten 
+
+	RELAY - kind of like a faucet, uses a control wire to open and close the circuit using a 		current (electromechanical)
+		
+		-in the 50s, only flip about 50 times a second
+		-complex functions could take over a minute
+		-wear was bad
+	DIODE - an electric component that permits the one way flow of current
+		
+	-Vacuum tubes using a triode helped a lot, many times faster, expensive, and were used 			in radio sets, and computers
+
+	-collosus mk 1 was one of the first huge computers that used vacuum tubes
+		-decode nazi stuff
+	-programming done by plugging wires into certain boards to set the computer up for 
+		whatever function desired
+	
+	ENIAC - first treu general purpose programmable computer - 5000-10000 operations per 
+		second
+	
+	TRANSISTORS - switch that can be opened or closed by applying electrical power via control wire - two electrodes separated by a material that is a semi-conductor
+	
+		-solid state component
+
+-------------
+BOOLEAN LOGIC & LOGIC GATES
+	
+	BINARY -of two states - how computers can store info
+		-TRUE/FALSE - 0 and 1 ( 1 is true )
+	TERNARY -of three states
+		-ternary operators!
+	
+	BOOLEAN ALGEBRA 
+		-made by george boole
+		-logic equations to represent truth
+		-not and or
+		
+		-we can easily use transistors for bools
+		-not gates on transistors were built on the circuit, uses ground
+		-and gate takes two inputs and one output - uses two transistors sidebyside
+		-or gates use two transistors in parallel
+		(visual representations)
+		-not - tri dot
+		-and - D
+		-or - spaceship
+
+		XOR (exclusive or)
+		- like a regular or, but if both are true, xor is false)
+			-only true when one of the two inputs are true, not both
+			-or gate w a smile (visually)
+	
+
+
+	

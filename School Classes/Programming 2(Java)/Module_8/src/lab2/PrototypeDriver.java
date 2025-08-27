@@ -1,0 +1,41 @@
+//************************************************************************
+// Author: Lane Pollock
+// Date: 10 Dec 2024
+// Language: Java
+// Assignment: Lab 2: Prototype Pattern
+// Description: Driver to demonstrate the different GameCharacters, and 
+//  use of the CharacterStore to provide clones when called
+//************************************************************************
+
+
+package lab2;
+
+public class PrototypeDriver {
+	public static void main(String[] args) {
+		//load cache
+		CharacterStore.loadCache();
+		
+		//local variables
+		//clones of our characters
+		GameCharacter clonedCharacter1;
+		GameCharacter clonedCharacter2;
+		GameCharacter clonedCharacter3;
+		
+		//initialize clones and call methods
+		clonedCharacter1 = CharacterStore.getCharacter("Warrior");
+		clonedCharacter2 = CharacterStore.getCharacter("Mage");
+		clonedCharacter3 = CharacterStore.getCharacter("Archer");
+		
+		//output information
+		System.out.println("Character : " + 
+									clonedCharacter1.characterType);
+		clonedCharacter1.play();
+		System.out.println("Character : " + 
+									clonedCharacter2.characterType);
+		clonedCharacter2.play();
+		System.out.println("Character : " + 
+									clonedCharacter3.characterType);
+		clonedCharacter3.play();
+	}
+
+}

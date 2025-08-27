@@ -1,0 +1,12 @@
+INDEX VERSION 1.134+/Users/lanepollock/Documents/Programming 2/.metadata/.plugins/org.eclipse.jdt.core
+4111164481.index
+1802498530.index
+453313901.index
+1812084219.index
+127443866.index
+1865797976.index
+2237763790.index
+3092851392.index
+4240255082.index
+476627316.index
+2181846231.index

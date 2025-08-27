@@ -1,0 +1,45 @@
+//************************************************************************
+// Author: Lane Pollock
+// Date: 2 Dec 2024
+// Language: Java
+// Assignment: Lab 3: Leave Approval
+// Description: Driver class to demonstrate the CoR between different
+//  employee leaders
+//************************************************************************
+
+package lab3;
+
+import java.util.ArrayList;
+
+public class CoRDriver {
+
+	public static void main(String[] args) {
+		// local variables
+		ArrayList<LeaveRequest> leaveList = new ArrayList<LeaveRequest>();
+		LeaveApprover teamLead = new TeamLead();
+		LeaveApprover deptManager = new DepartmentManager();
+		LeaveApprover hrManager = new HRManager();
+		LeaveApprover CEO = new CEO();
+		
+		//set up the chain of responsibility
+		teamLead.setNextApprover(deptManager);
+		deptManager.setNextApprover(hrManager);
+		hrManager.setNextApprover(CEO);
+		
+		//create leave requests and test different values
+		leaveList.add(new LeaveRequest(4));
+		leaveList.add(new LeaveRequest(8));
+		leaveList.add(new LeaveRequest(14));
+		leaveList.add(new LeaveRequest(24));
+		leaveList.add(new LeaveRequest(34));
+		
+		//send the leave requests for approval
+		for(LeaveRequest request :leaveList) {
+			System.out.println("Request for " + request.getDays() + " days.");
+			teamLead.approveLeave(request);
+			System.out.println("-------------------------------------------");
+		}
+
+	}
+
+}

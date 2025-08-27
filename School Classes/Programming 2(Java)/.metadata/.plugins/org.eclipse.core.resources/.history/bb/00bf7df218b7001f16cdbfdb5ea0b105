@@ -1,0 +1,15 @@
+package lab2;
+
+public class Mage extends GameCharacter{
+	
+	//constructor
+	public Mage() {
+		this.characterType = "Mage";
+	}
+	
+	@Override
+	void play() {
+		System.out.println("The mage is casting spells");
+	}
+
+}

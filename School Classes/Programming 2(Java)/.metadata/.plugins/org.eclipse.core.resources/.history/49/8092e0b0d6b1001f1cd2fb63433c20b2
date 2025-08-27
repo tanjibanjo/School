@@ -1,0 +1,62 @@
+//************************************************************************
+// Author: Lane Pollock
+// Date: 2 Dec 2024
+// Language: Java
+// Assignment: Lab 1: Game Character Lab
+// Description: Intern class that implements employee interface
+//************************************************************************
+
+
+package lab2;
+
+public class Intern implements Employee {
+	//instance variables
+	private String name,
+				   position = "Intern",
+				   universityAttended;
+	
+	//constructors
+	public Intern() {
+		this.name = "Unknown";
+		this.universityAttended = "Unkown";
+	}
+	
+	public Intern(String name, String university) {
+		this.name = name;
+		this.universityAttended = university;
+	}
+
+	//getters and setters
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public String getUniversityAttended() {
+		return universityAttended;
+	}
+
+	public void setUniversityAttended(String universityAttended) {
+		this.universityAttended = universityAttended;
+	}
+	
+	//implement interface methods
+	@Override
+	public void showEmployeeDetails() {
+		System.out.println("Name: " + name + " | University Attended: " 
+				+ universityAttended + " | Position: " + position);
+	}
+
+}

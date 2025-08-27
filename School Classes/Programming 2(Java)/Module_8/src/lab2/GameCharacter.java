@@ -1,0 +1,36 @@
+//************************************************************************
+// Author: Lane Pollock
+// Date: 10 Dec 2024
+// Language: Java
+// Assignment: Lab 2: Prototype Pattern
+// Description: GameCharacter abstract class to be extended by concrete
+//  character classes
+//************************************************************************
+
+
+package lab2;
+
+public abstract class GameCharacter implements Cloneable{
+	//instance variables
+	protected String characterType;
+	protected int healthPoints, attackPower, defensePower;
+	
+	//abstract method for play
+	abstract void play();
+	
+	//clone method, which tries to clone -
+	//returns either the clone or error message
+	public Object clone() {
+		Object clone = null;
+		
+		try {
+			clone = super.clone();
+		}
+		catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		
+		return clone;
+	}
+
+}

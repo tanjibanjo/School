@@ -1,0 +1,360 @@
+
+======= Common =======
+* ui: Save the lflags variable (thanks stahta01)
+* ui: Emulate middle mouse paste under all systems due to buggy wxClipboard
+* ui: Fix layout issues with listbbok in settings-dialogs, when changing from icon- to list-view; still not absolutely satisfying on all platforms.
+* ui: Implement feature #5694 - Show the active file in the editor in the project tree automatically (thanks davidallen)
+* ui: Zoom linenumber- and folding-margin, if the editor is zoomed; also fixes an issue described here: http://forums.codeblocks.org/index.php/topic,18229.msg124738.html#msg124738
+* ui: Applied patch #3470: project tree: fix crash on delete while dragging (modified)
+* Make sure "Save As" works correctly, thanks Pecan; see: http://forums.codeblocks.org/index.php/topic,18400.msg125820.html
+* ui: Fix bug "Ticking any checkbox in the File properties dialog cause the file to be made read-only"
+* editor: Fix problem with line-numbers being shown for newly opened editors, even if the appropriate options is turned off; see: http://forums.codeblocks.org/index.php/topic,18516.msg126649.html#msg126649
+- editor: Read only file, middle click, do not offset the caret
+- app: Add 256x256 resolution to app icon (Windows)
+* ui: Implement hiding of icons in settings dialogs with wxGTK and fix an assert in wx2.9+ on windows; not absolutely satisfied
+- settings: Don't allow an editor colour theme to contain invalid characters
+* Fix bug #19025 'std::bad_alloc' when loading cmake generated project
+* info_window: Improve multi monitor support
+* ui: Allow the user to change the colours of the linenumbers and the margin in the editor
+* ui: Applied patch #3426: Allow modify "start here page" background colour
+* ui: Applied patch #3480: Fix menu entry for scripts are not updated
+- ui: Translate some strings in the config panel of DragScroll plugin (thanks gd_on)
+- ui: Translate some strings in the config panel of BrowseTracker plugin (thanks gd_on)
+- ui: Translate a string in the LibFinder plugin (thanks gd_on)
+- ui: Translate some string in the FileManager plugin (thanks gd_on)
+- ui: Translate some string in the ProjectManagerUI class (thanks gd_on)
+- ui: Remove the shortcut for hiding the editor tabs, because it causes too much complaints in the forum
+* Prevent jiggling on autocomp rebuild when already shown
+* wxPropgrid: Correct handling of composite flags in wxFlagsProperty; backport of my patch for wxWidgets, see: http://trac.wxwidgets.org/changeset/74808
+* ui: Find-replace-dialog: Fix shortcut (was used twice)
+- ui: Make it possible to copy/paste the script errors in the GenericMultiLineNotesDlg dialog
+* ui: Apply patch 3488: ClassWizard: add option to auto set include dir (modified)
+* ui: FindReplaceDialog: avoid possible infinite loop when search is limited to StartFile; see: http://forums.codeblocks.org/index.php/topic,18044.msg124255.html#msg124255
+* ui: Incremental select dlg: increase default size
+* ui: Add missing builtin-member bin to global variables, a textcontrol for it was shown in dialog, but the content was not saved; thanks scarphin for reporting
+* Applied patch by LETARTARE: http://forums.codeblocks.org/index.php/topic,18250.msg124828.html#msg124828
+* plugins: Handle EOL mode AUTO with platform default for code generation
+* Fix an issue descrinbed here: http://forums.codeblocks.org/index.php/topic,18044.msg123529.html#msg123529
+* ui: Conditionally remember not to save the perspective, partial fix for bug 18970
+* ui: Fix proper use and initialisation of common controls on Windows
+* ui: Find/replace: Fix bug when replacing and the first string to be replaced is already selected
+* ui: Added compatibility layer for Windows Vista, 7, and 8 to manifest files (Windows only)
+* ui: Allow wildcards when selecting files that shall belong to a target (project options dialog -> build target "All/? on/off")
+* ui: AnnoyingDlg - use saved return value whenever possible
+* Applied patch #3463: add macro TARGET_PARAMETERS
+* Applied patch #3462 Autoversioning:option to use #define instead of static const
+* Applied patch #3002 Fix Bug #15359
+* ui: AnnoyingDlg: add infrastructure to remember the user's choice
+* ui: Fixed: [Bug #18904] Shortcut key problems with search dialog
+* ui: Fixed: UI inconsistencies Find/Replace Dialog.
+* ui: Remove use of wxWindowUpdateLocker (convenience-class for Freeze() and Thaw()) from TextCtrlLogger, because it clears selection and moves the control to top position; see: http://forums.codeblocks.org/index.php/topic,17905.msg122470.html#msg122470
+* script_bindings: Implement GetCheckListboxChecked and other bindings for wizards
+* ui: Add mouse right click context menu to toggle the toolbar view status in the MainFrame, see related discussions in http://forums.codeblocks.org/index.php/topic,17808.msg121848.html#msg121848
+* Applied patch 3449: do not mix operation during toggle comment (modified)
+* editor_settings: Add UI to allow the use to copy matching colours from other languages
+* editor_settings: Add UI to allow the user to copy easily colours from other languages
+- ui: Set detect indent style off by default
+* lexer: Enhance C++ keywords for std::vector, std::iostream and alike
+* ui: Add a new built-in field named "bin" in the global compiler variable setting dialog. See discussions in http://forums.codeblocks.org/index.php/topic,17868.0.html
+* Fix Bug #17195: Search all files for regex "^" freezes IDE and [Bug #18990]
+* ui: Add two more terminal presets: xfce_terminal and terminology
+* mozilla-chardet: Fix number of SingleByteCharSet-probers, to avoid array overrun (we use up to 16 probers)
+* editor: Auto detect indent style
+* recent files: Fix two synchronization bugs (recent files != start here page)
+* startherepage: Fix crash when clearing the history of recent files/projects
+* macromanager: Fix infinite loop if $REMOVE_QUOTES macro fails to find quoted argument
+* Attempt to address the problem in topic http://forums.codeblocks.org/index.php/topic,17544.htm (default.conf of zero size)
+* cbdstyledtextctrl: Scripting support
+* editor: Add command which can be used to skip the current selection and go to the next
+* editor: Don't put indicators over selected text, when select next occurrence command is used
+* editor: Add command to select the next occurrence of the currently selected text, then allow multiple editing
+* startherepage: Make some icons partly transparent, to loook better with dark backgrounds
+* start_page: Don't reset the scrolling of the windows when an recent file entry is deleted
+* cbcolourmanager: Add a colour override for the text colour of the non-source files in the project tree
+* colour_manager: Recreate editor styles, after the environment settings dialog is closed
+* colour_manager: Make reseting a particular colour to the default value to be persistent in the config
+* startherepage: Make it to be more dark-theme friendly, by allowing the user to changes some of the colours using the colour manager
+* Add more debugging colours to the colour manager
+* Rework the loggers to use the colour manager for their colour settings
+* Rework the editor to use the colour manager for none syntax highlight colours
+* settings: Add UI for modifying the colours in the colour manager
+* sdk: Use the colour manager for the choosing the colours of the active frame in the backtrace window
+* sdk: Add colour manager class, which will be used to manage all colours in the IDE
+* exchndl: Link libz instread of libintl, thus implement the Feature Request #5517. Add checking winnt.h macros for both MinGW and MinGW-W64. Workaround a #error in bfd.h.
+* editor: Fix bug #18892: Line Up/Down splits CR LF (by Alpha)
+* cbTreeCtrl: Fix navigation to previous item via up arrow key (by Alpha)
+* editor: Don't put highlight indicator for the string selected by the user
+* settings: Add buttons to set the fore/back colours to default in the settings for the syntax highlight
+* editor: Make the minimum required selected text length for highlight occurrences to trigger to be configurable (based on patch #3130)
+* ui: Try to make visible all toolbars, when a toolbar is shown/hidden and add menu option to fit and optimize the toolbars;
+* ui: Replace most of the wxComboBox with wxChoice controls in the settings
+* ui: Replace the wxComboBox with wxChoice in the Project Dependencies dialog (wxChoice is more user friendly on linux)
+* ui: Unify the context menu shown for the workspace and when the user clicks in the whitespace;
+* editor: Recognize (other) STL headers (by Alpha)
+* sdk: Allow logger implementations to control what items are available in the context menu;
+* logger: Now that is not needed to be public anymore, make BlendTextColour a private API inside logger.cpp
+* lexer: Describe keyword sets (by Alpha)
+* Fix bug #18857: Line block movement: handle multi-byte characters (by Alpha)
+* Fix bug #18856: Do not unexpectedly include an additional line during block movement (by Alpha)
+* ui: Make home/end keys act consistent in IncrementalSelectListDlg; support numpad movement (by Alpha)
+* sdk: Make expanding backticks to not emit ' ' at the end of the string, this is needed, when expanding -DVAR=\'"`cmd`"\'
+* mozilla-chardet: Major update to Mozilla encoding detection engine (might still need some adjustments to Linux build system)
+* Applied patch #3396: Add support for Debian sh4 port
+* ui: Ctrl context menu: show file modified status (by Alpha)
+* editor: Option to exclude stl highlights in C (by Alpha)
+* find file: Option to open file; projects searchable by filename (by Alpha)
+* editor: Ensure nearby lines are visible when jumping to previous/next change or matching brace (by Alpha)
+* editor: Make strip trailing blanks to preserve active line of active editor (fix bug #18845) (by Alpha)
+* ui: Layout fix for the Mac: actually show the list of targets in the project build setting (note: the list of tabs is actually too large - maybe rename the captions to make it smaller?)
+* find file: Enable wildcard, case-insensitive, and visual selection (by Alpha)
+* lexer: Case-insensitive sort (by Alpha)
+* editor: Update highlighting of open files immediately after define collection (by Alpha)
+* find/replace: Remember last target scope (by Alpha)
+* ui: Applied patch #3124: Display end-of-line mode in status bar
+* Do not ask for re-loading externally modified project files in batch build mode
+* ui: Allow re-sizing of edit keywords dialog
+* lexer: Added objective-C lexer (activated for *.mm only, to avoid conflicts with C/C++ and Matlab lexer)
+* swap header/source: Case-insensitive search as fallback (by Alpha)
+* cbAuiNotebook: Make sure tabtooltips are always shown for newly added tabs
+* Applied (modified) patch #3380: Highlight Lang: parse #! and recognize standard headers
+* Applied patch #3385: Allow using macros in compiler executable name
+* Close all selected projects in the project tree, not only the first one;
+
+======= Updated third party components =======
+* pumped astyle lib to v2.0.4 final
+* pumped (wx)scintilla to v3.3.5
+* pumped wxPDFDoc to 0.9.4 (includes many changes related to wx29)
+* pumped underlying squirrel scripting lib from v2.2.4 to v2.2.5 (stable)
+
+======= Code Completion =======
+* Check anonymous Tokens by using m_IsAnonymous not g_UnnamedSymbol string comparison.
+* Fix bug introduced in rev6058, see discussion http://forums.codeblocks.org/index.php/topic,18565.0.html
+* Apply patch #3494, add a RefineAnonymousTypeToken() function to show anonymous token in a more user friendly way, Add a m_IsAnonymous member variable to Token class, and use it.(thanks hovercraft)
+* Handling __at keyword for SDCC compiler.
+* Parser ignore invalid documentation lines of style "////"
+* Fix merged Token names bug introduced in rev9438 by adding a underscore between the file index and unnamed class/struct/enum Token index. See discussion in http://forums.codeblocks.org/index.php/topic,18542.0.html.
+* Fix bug ##19186, http://developer.berlios.de/bugs/?func=detailbug&bug_id=19186&group_id=5358, when a file was re-parsed, the Token name for the unnamed struct always changed, this is because we use a global counter for all the unnamed struct/enum. Solution: let these counters file related, which means each file have its own counter staring from zero, and the Token name has a file index prefix like __UnnamedStruct70, where 7 is refer to a file index, the 0 donates the unnamed struct counter. Also, the counter is started from 0, it was 1 before. Reparse does not change the file index, so we will not produce garbage token names.
+* Fix doxygen processing bug http://forums.codeblocks.org/index.php/topic,18471.0.html
+* Fix a bug in function ParserThread::GetBaseArgs(), when using a wxChar pointer to access the wxString, we should always check whether the pointer reaches the end of wxString. Hopefully solve the problems reported in http://forums.codeblocks.org/index.php/topic,18438.0.html
+* Fix doubled quotes in header completion
+* Reliable working of UngetToken() when macro expansion is involved, it set the undo index value correctly(thanks Huki)
+* Avoid take backward step (UngetToken) twice in the Tokenizer class
+* Tiny fix as reported here: http://forums.codeblocks.org/index.php/topic,18315.0.html
+* When reading the parentheses, set the correct Tokenizer mode(tsReadRawExpression), also skip comments after the first '(' (thanks Huki)
+* Only skip after single equal sign, not double equals sign (thanks Huki)
+* Correctly find the end of a c style comment (thanks Huki)
+* Handle macro definition correctly, distinguish between function like macro definition and variable like definition (thanks Huki)
+* Fix show tooltip in non-active function
+* Fix doc-popup open declaration
+* Fix two bugs: 1, static variable definition in a header file cause different instances in different translation units; 2, wrong Connect() function usage. See our discussion in: http://forums.codeblocks.org/index.php/topic,17982.0.html
+* Do not remove the first character if it is not the beginning of a function body, this fix a bug that a class declaration like "class XXX" was always parsed as "lass XXX", see bug report and discussion in http://forums.codeblocks.org/index.php/topic,17756.0.html
+* Do not duplicate documentation (patch 3455, modified)
+* Apply patch 3440: CC recognize function call inside parentheses
+* Move the settings for the documentation popup colours to the ColourManager
+* Fix the UI for the setting for "Pseudo semantic highlight" feature
+* Remove the hack of de-selection icons code, so the icons status was consistent with native behavior. See discussions in: http://forums.codeblocks.org/index.php/topic,17767.
+* Nested namespace (by p2rkw, modified); local using namespace
+* Simple resolution of enumerator assigned enumerator
+* Show enumerator assignment in documentation popup
+* Parse enumerator assignments
+* Disable semantic keywords by default
+* Add option controlling semantic keywords
+* Handle documentation on multi line declarations (by p2rkw)
+* Provide (some) semantic highlighting
+* Use timer delay to show documentation; prevents scroll stuttering
+* Applied (modified) patch #3381: CC, autocomplete: added argument's names and types to list
+* Commit patch #3408 to fix bug #18559 (CC doesn't work on function arguments), thanks p2rkw. See some discussion in http://forums.codeblocks.org/index.php/topic,16024.msg108174.html#msg108174.
+* Dynamically connect / disconnect events to avoid a RARE race conditions
+* Avoid crashes in case project got invalid (catched a VERY rare crash at old line 138, for-loop)
+* Fix a segmentation fault in nativeparser.cpp - http://forums.codeblocks.org/index.php/topic,17506.msg120018.html#msg120018, do not use the erased iterator.
+* Applied: [Patch #3413] Fix of bug #018848 for code completion plugin
+* Support completing C++98 style enums and add proper parsing for C++11's strong enums (thanks p2rkw);
+* Improve lexer independent handling (by Alpha)
+* New icon for CC's setting dialog
+* Applied patch #3398: CC: sort tree by token line
+* Don't place the calltip outside of the editor window (this should be modified to not place it outside the monitor, instead)
+* Don't place the calltip over the cursor
+* Do not excessively report still-parsing tooltips (by Alpha)
+* Applied patch by p2rkw to expand namespaces and classes (http://forums.codeblocks.org/index.php/topic,16411.msg111225.html)
+* Prevent header completion box from rebuilding too often (by Alpha)
+* Apply Patch #3345 (Added code completion of declarations in for/if/while heads)
+* Header completion: fix Windows path issues (by Alpha)
+* Applied patch #3382: Enlargment of autocomplete's listbox
+* Applied patch #3392: classbrowser: use Token::m_FullType instead of m_BaseType
+* Applied patch #3391: preprocessor completion improvements
+
+======= Compiler =======
+* merged xml_compiler branch into trunk (branch to trunk)
+* xml_compiler branch is now OBSOLETE therefore
+
+* Fix possible crash reported here http://forums.codeblocks.org/index.php/topic,18611.0.html
+* Fix missing flags for ICC under linux
+* Add registry based autodetection of TDM-GCC
+- Enable localization of XML based compiler interfaces
+* Add compiler warning : -Wnon-virtual-dtor (Warn if a class has virtual functions but no virtual destructor)
+* Don't recompile the regexes for every line produced by the compilers
+* Apply patch 3474, support IAR ARM compiler (modified)
+- Fixed incorrect compiler error message (see http://forums.codeblocks.org/index.php/topic,17908)
+- Add -Wall flag to Clang interface
+* Add annoying dialog for conflict between Flags and Other Options
+* Fix Open Watcom link bug
+* Support PCH files with extensions other than .h (by stahta01, modified)
+- Print the path to the output file (executable/library)
+- Avoid exception if command type has no tools (by Alpha)
+* Make the gcc compiler be a bit more robust, when making static libraries (by Alpha)
+* Fix loading multi-command tools (by Alpha)
+* Print better message for separation between the build and the run logs in the build log pane;
+* Don't switch to the "Build messages", if the active log window is not "Build log"
+* Don't clear logs before run (modified patch by p2krw);
+* Always add the menu items in the project/workspace context menu;
+* Add fit and autofit menu items in the build messages context menu;
+* Auto fit columns in the build messages;
+- Log the current build target/project to the build messages log window;
+* Applied patch #3402: Build log: use same colors as Build messages pane (modified by Alpha)
+* Fixed build end always with red line (by Alpha)
+* Fix macro replacement bug; fix wxExecute related bug; add sanity check (by Alpha)
+* Applied patch #3152: compiler: support Keil C51 and IAR 8051 (modified by Alpha)
+* Fixed depslib (and therefore dependency calculation) does not work for file in root of a drive on Windows
+* Do not require a valid compiler to run commands-only and "No Compiler" targets (extends rev. 8686) (by Alpha)
+* Fixed "error: converting to execution character set: Illegal byte sequence" hopefully once and for all
+* Applied patch #3368: LCC-Win32 compiler default options (modified) (by Alpha)
+* Applied patch #3346: Update DMD compiler settings for current version
+* Fixed bug with compiling PCH files in case compiler is *not* PCH capable
+* Fix duplication of commands on reset (by Alpha)
+* Clang fallback to gnu archiver if llvm-ar is not found (by Alpha)
+* Fix rare log duplication bug (by Alpha)
+* Highlight command generation warnings (missing dependencies, problems with detecting object files) and report to build messages (by Alpha)
+* Make commands-only targets run-able (by Alpha)
+* Inform, if killing the process succeeded in the logs (for debugging)
+* Fix outdated file extension with SDCC compiler as described here (patch by Alpha): http://forums.codeblocks.org/index.php/topic,17130.msg117753.html#msg117753
+- Allow the user to choose if the custom variables should be quoted or not (needed when entering something like |wx-config --libs|);
+
+======= Debugger =======
+* Do "Jump to frame" on double click if "switch to frame" is disabled
+* Don't override the value for simple pointer types with the address of the expression
+* Improve GetEditorWordAtCaret to work correctly for non-rectangle selections (thanks Huki)
+* Fix some crashes, when all debugger plugins have been unloaded
+* Allow the user to control which watches should be updated automatically and which shouldn't
+* Optimize updating watches, when they are not in the current context (don't call the output command if the whatis fails)
+* Initial re-implementation of locals and function arguments
+* Fix parsing watches containing chars equal to '{' or '}'
+* Set MinSize for text-control in debuggeroptionsdialog, to fix a layout-bug in ubuntu (see: http://forums.codeblocks.org/index.php/topic,18214.msg124531.html#msg124531); MinSize has to be set manually to work; setting in xrc-file does not work correctly and will be overridden when touched by wxSmith anyway
+* Fix layout of debugger-settings dialog: Panels did not always fit into the dialog without manually resizing it.
+* Fix a bug where the plugin doesn't show the cursor when a breakpoint is hit
+* Fix a crash when removing at least 3 targets one after another from the project
+* Don't queue empty command if the initial command string is empty
+* Fix crashes, when opening the debug menu after the debugger plugin has been disabled and then re-enabled.
+* Fix all gtk-critials and a possible crash on Ubuntu 13.04
+* Fix parsing structs containing bool or global enum members
+* Don't crash if the toolbar is not created and OnUpdateUI is called (patch 3457)
+* Make "Evaluate expression under cursor" to work again for class members, when pseudo semantic highlight is enabled
+* Highlight active debug line the same as the active line, where cursor is (applied modified patch #3280)
+* Allow breakpoints to work, when using C::B under Wine;
+* Fixed when a workspace is loaded sometimes the wrong debugger is used (by Pecan, see here: http://forums.codeblocks.org/index.php/topic,17260.msg118431.html#msg118431)
+* Fix crash on shutdown when cb is built with wx29;
+* Parse correctly structs containing wide char strings or characters;
+
+
+======= Abbreviations =======
+* Fix bug #18824 '\n' becomes newline on restart (by alpha001)
+* Fixed rare bug with linefeeds in abbreviations plugin
+* Applied patch #3383: Abbreviations: auto-comp icon
+* Support for multiple languages by darmar
+* Explicit support for Fortran as additional language by darmar
+
+======= AStyle =======
+* Applied patch #3478: Add line breaking option to AStyle
+
+======= DoxyBlocks =======
+* Support projects located in path with spaces or other strange characters
+* Applied: [Patch #3414] Bugfix of #018848 for plugins\contrib\DoxyBlocks
+* Is-dirty system for saving settings (by Alpha)
+
+======= EditorTweaks =======
+* Proper fix of crash / bad behaviour due to EditorTweaks plugin as reported here: http://forums.codeblocks.org/index.php/topic,18358
+* Introduce wrap char mode, code refactoring, remove a member variable since programmatically change the menu item status does not trigger its event handler. see discussion in http://forums.codeblocks.org/index.php/topic,18358.0.html for details.
+* Match indent style on demand
+* Applied patch #3379: EditorTweaks: buffer pos, smooth scroll
+
+======= Header Fixup =======
+* Major overhaul for headerfixup plugin (fixes issue reported here: http://forums.codeblocks.org/index.php/topic,17095.0.html)
+
+======= Incremental Search =======
+* Change used indicators to avoid conflict with s_indicHighlight in cbstyledtextctrl.cpp
+* Implement search history with configurable length (default is 20, max is 200)
+
+======= Occurrence Highlighting =======
+* Move occurrence highlighting from cbEditor into a plugin. (refer here: http://forums.codeblocks.org/index.php/topic,18207.0.html)
+
+======= Fortran Project =======
+Manage Fortran projects within Code::Blocks easily, including code completion. (bundled, refer to: https://code.google.com/p/fortranproject)
+
+======= Smart Indent =======
+* Applied patch #3365: SmartIndent: enable on entire C-language family
+
+======= Spell Checker =======
+* Fix bug 19164, incorrect highlighting of multibyte characters
+* Remove possible invalid dictionary selection
+* Fix bug / add feature mentioned here: http://forums.codeblocks.org/index.php/topic,17805.0.html
+* Add disabled indicator; default lang: English
+* Fix an issue with using tab in a zero-width rectangular selection, see: http://forums.codeblocks.org/index.php/topic,17513.msg120062.html#msg120062 (example 2) for details
+
+======= Thread Search =======
+* Immediately return from loggert-tree click event, if the tree was cleared; avoid annoying pop up of "Failed to retrieve file path and line number" messagebox after leaving configuration dialog (happened at least on wxGTK)
+* Use right-click event instead of menu event to invoke context-menu of logger-tree, this avoids annoying pop up of the infopanes context menu after the tree contextmenu was closed (happened at least with wxGTK)
+* Really remove last item of toolbarcombo, if max-count is reached
+* Initially load search history in toolbar combobox
+* Change the options icon in the toolbar and in the panel, when an option is selected
+* Fix View->FocusThreadSearch to work correctly even if the info panel is floating
+- Change default setting (hide the preview and disable the delete before search option)
+* Show error message, when the directory being searched in doesn't exists or cannot be opened
+- Show errors as InfoWindows
+* Always use the visible string in the dir/mask comboboxes
+* Add combos for the file masks and search paths;
+* Attempt to fix crash under MacOS
+
+======= ToDo =======
+* Add the new scope of active target files.
+* Fix bug in parser
+* Add optional date to todo (who#prio#date)
+
+======= Wizard =======
+* Re-brand wxWidgets 2.9.x (svn) as 3.0.x and add flag '-Wno-unused-local-typedefs' for new GCC on older wx versions
+- Fix bug #19168
+* Fix console project for Clang
+* Fix issue on WinXP described here: http://forums.codeblocks.org/index.php/topic,18445.msg126199.html#msg126199; introduced with wx2.9+ compatibility changes in commit 9390; wxLC_LIST seems to be broken on WinXP wx2.8
+* Apply patch 3458: update SFML project wizard (modified)
+* Add OpenCV(Open Computer vision library) project wizard for mingw and linux.
+* Resolve incorrect static library output path (by LETARTARE and Alpha)
+* Applied patch #3400: Scripted Wizard: MCS51: allow compiler choice (modified by Alpha)
+* Fixed: Win32 project wizard generated code can't be built in Unicode mode (as reported at http://forums.codeblocks.org/index.php/topic,17264.0.html)
+* Update default compiler options (by Alpha)
+* Applied patch #3364: ScriptedWizard: WX wiz fallback: Query to link debug target to release libs, in case debug libs are not available
+
+======= Valgrind =======
+* Modify it to support checking dynamic/static lib targets
+* Made it to modify the PATH/LD_LIBRARY_PATH in order to allow the executable to find its libraries
+
+======= wxSmith =======
+* Correct handling of composite-flags in codegeneration of wxsRichTextCtrl, wxsRichTextFormattingDialog, wxsRichTextStyleOrganiserDialog and wxsChart
+* Fix crash of wxsImageTreeEditorDlg, when opening colour-dialog
+* Fix layout issue; only the top-sizer with the title of wxsImageTreeEditorDlg was shown
+* (wxsimagelisteditordlg): Expand image labels, so larger numbers get not cut off; add button to save a single bitmap instead of only sving the list as one large bitmap; many differences come from autogeneration of the source files with actual wxSmith
+* Immediately show changed size (after adding first image) and image count in wxsimagelisteditordkg, disable del-, clear- and save-buttons if list is empty
+* Fix #19087; manually changed variable name of toolbaritem was reset to default if the toolbaritem-editor was used
+* Uupdate of various wxSmith contrib elements, namely: wxchart, wxtrhings, wxstc
+* Add missing initialisation for member-variables, fix possible crash-candidate, due to unitialised bool-variable
+* (hopefully) Fix crash when adding wxBitmapButton, due to unitialised bool-variable; see: http://forums.codeblocks.org/index.php/topic,16104.0.html for bug-report
+- Removed bug with Tool bar handled additionally as DefaultPane
+* lexer: Restrict wxSmith generated code highlighting
+* Updated wxSmithLED (based on patch of ZinnJonas), using r8950
+* Updated wxContribItems: wxLED (based on patch of ZinnJonas)
+* Updated wxSmithSTC (the STC part of it)
+* Updated wxsLed
+* Added support fr radio button and separator in wxAuiToolbar
+
+======= cb_share_config =======
+* Added ability to export complete compiler settings (section)
+* Added ability to export complete debugger settings (section) and/or individual debugger sets
+* Support transferring separate themes for the editor
+* Support transferring the new colours settings

@@ -1,0 +1,38 @@
+//************************************************************************
+// Author: Lane Pollock
+// Date: 2 Dec 2024
+// Language: Java
+// Assignment: Lab 1: Game Character Lab
+// Description: Driver class that demonstrates Employees being put into
+//  company directory
+//************************************************************************
+
+
+package lab2;
+
+public class CompositeDriver {
+
+	public static void main(String[] args) {
+		//local variables
+		//employees to add to directory
+		Employee dev1 = new Developer(100, "Fred Flinstone", "Pro Developer");
+		Employee dev2 = new Developer(101, "Bart Simpson", "Developer");
+		Employee manager1 = new Manager(102, "Tanji Banjo", "Software Department");
+		Employee intern1 = new Intern("Liam", "Northwest Vista College");
+		
+		//new directory to hold employees
+		CompanyDirectory empDirectory = new CompanyDirectory();
+		
+		//add employees
+		empDirectory.addEmployee(dev1);
+		empDirectory.addEmployee(dev2);
+		empDirectory.addEmployee(manager1);
+		empDirectory.addEmployee(intern1);
+		
+		empDirectory.showEmployeeDetails();
+		
+		System.out.println("\nEmployee Count: " + empDirectory.countEmployees() );
+
+	}
+
+}

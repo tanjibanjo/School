@@ -1,0 +1,103 @@
+//************************************************************************
+//	Author: Lane Pollock
+//	Date: 10 Apr 2024
+//	Language: C++
+//	Assignment: Lab 6.1: Ages
+//	Lab Purpose/ Description: Create a program to get 5 ages from user
+//      and display the average, lowest, and highest age using an array	
+//************************************************************************
+
+#include <iostream>
+using namespace std;
+
+
+//function prototypes
+void getAges(int[]);
+double averageAge(int[], int);
+int lowestAge(int[], int);
+int highestAge(int[], int);
+
+int main()
+{
+	//declare local variables
+	const int ARRAY_SIZE = 5;
+	int ageArray[ARRAY_SIZE];
+	
+	//call function to get ages from user
+	getAges(ageArray);
+	
+	cout << endl;
+	
+	//display the array in one line seperated by commas
+	cout << "Ages entered: " << ageArray[0] << ", "
+		 << ageArray[1] << ", " << ageArray[2] << ", "
+		 << ageArray[3] << ", " << ageArray[4] << endl;
+	
+	//call function to get the agerage age and display
+	cout << "Average age: " << averageAge(ageArray, ARRAY_SIZE) << endl;
+	
+	//call function to get the highest age and display
+	cout << "Highest age: " << highestAge(ageArray, ARRAY_SIZE) << endl;
+	
+	//call function to get the lowest age and display
+	cout << "Lowest age: " << lowestAge(ageArray, ARRAY_SIZE)<< endl;
+ 
+    return 0;
+} //end main
+
+//function definitions
+
+//function to prompt user for and store 5 ages in an array
+void getAges(int ages[])
+{
+	//prompt for 5 ages
+	cout << "Please enter five ages seperated by spaces\n";
+	
+	cin >> ages[0] >> ages[1] >> ages[2]  >> ages[3] >> ages[4];
+} //end function
+
+
+//function to take the array of ages and calculate the average age
+double averageAge(int ages[], int SIZE)
+{
+	//local variables
+	int totalAge;
+	
+	//iterate through array to add up all the ages
+	for(int i = 0; i < SIZE; i++)
+        totalAge += ages[i];
+	
+	return (double)totalAge / SIZE; //average of ages
+} //end function
+
+
+//function to iterate through the array and find the lowest age
+int lowestAge(int ages[], int SIZE)
+{
+	//local variables
+	int lowest = ages[0]; 
+	
+	for(int i = 1; i < SIZE; i++) //iterate through the array
+	{
+		if(ages[i] < lowest)
+			lowest = ages[i]; //if number is lower, replace
+	} //end for loop
+	
+	return lowest;
+} //end function
+
+
+//function to iterate through the array and find the highest age
+int highestAge(int ages[], int SIZE)
+{
+	//local variables
+	int highest = ages[0];
+	
+	for(int i = 1; i < SIZE; i++) //iterate through the array
+	{
+		if(ages[i] > highest)
+			highest = ages[i]; //if number is higher, replace
+	} //end for loop
+	
+	return highest;
+} //end function

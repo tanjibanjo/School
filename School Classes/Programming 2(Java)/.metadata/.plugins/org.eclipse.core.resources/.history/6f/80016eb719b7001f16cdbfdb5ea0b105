@@ -1,0 +1,25 @@
+package lab2;
+
+public abstract class GameCharacter implements Cloneable{
+	//instance variables
+	protected String characterType;
+	protected int healthPoints, attackPower, defensePower;
+	
+	//abstract method for play
+	abstract void play();
+	
+	//clone method, which tries to clone and returns either the clone or error message
+	public Object clone() {
+		Object clone = null;
+		
+		try {
+			clone = super.clone();
+		}
+		catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		
+		return clone;
+	}
+
+}

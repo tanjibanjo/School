@@ -1,0 +1,28 @@
+//************************************************************************
+// Author: Lane Pollock
+// Date: 10 Dec 2024
+// Language: Java
+// Assignment: Lab 2: Prototype Pattern
+// Description: Mage class to extend GameCharacter
+//************************************************************************
+
+
+package lab2;
+
+public class Mage extends GameCharacter{
+	
+	//constructor
+	public Mage() {
+		this.characterType = "Mage";
+		this.attackPower = 100;
+		this.defensePower = 40;
+		this.healthPoints = 60;
+	}
+	
+	@Override
+	void play() {
+		System.out.println("The mage does " + this.attackPower
+				+ " damage with spells.");
+	}
+
+}

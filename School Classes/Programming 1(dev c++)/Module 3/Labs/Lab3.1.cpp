@@ -1,0 +1,85 @@
+//	Author: Lane Pollock	
+//	Date: 21 Feb 2024
+//	Language: C++
+//	Assignment: Module 3 - Lab 1
+//	Lab Purpose/ Description: Create a program that prompts for two integers, with the first being less than the second, 
+//							  then output the even and odd numbers in between as well as their respective sums
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	//declare local variables
+    int firstNum, secondNum, evenSum, oddSum;
+    
+    //prompt user for two numbers
+    cout << "Enter the first number: ";
+    cin >> firstNum;
+    cout << "Enter the second number: ";
+    cin >> secondNum;
+    
+    //validate input- first number must be less than second
+    while(firstNum >= secondNum)
+    {
+    	cout << "Error: The first number must be less than the second number. Please try again.\n\n";
+    	//re-prompt for the numbers
+		cout << "Enter the first number: ";
+    	cin >> firstNum;
+    	cout << "Enter the second number: ";
+    	cin >> secondNum;
+	}	//end of while loop
+    
+    //output odd numbers, inclusive
+    cout << "Odd numbers between " << firstNum << " and " << secondNum << ": \n";
+    
+    for(int odd = firstNum; odd >= firstNum && odd <= secondNum; odd++) //set up for loop
+    {
+    	//check and output the odd numbers
+    	if(odd % 2 != 0)
+		cout << odd << " ";
+	}	//end of for loop
+    cout << endl;
+    
+    //output the even numbers, inclusive
+	cout << "Even numbers between " << firstNum << " and " << secondNum << ": \n";  
+	
+	for(int even = firstNum; even >= firstNum && even <= secondNum; 
+	   even++) //set for loop
+	{
+		//check and output the even numbers
+		if(even % 2 == 0)
+		cout << even << " ";
+	}	//end of for loop
+    cout << endl;
+    
+    //initialize evenSum variable, then calculate the sum of the even numbers
+    evenSum = 0;
+	for(int even = firstNum; even >= firstNum && even <= secondNum; even++)
+	{
+		//check for even and add to total
+		if(even % 2 == 0)
+		evenSum += even;
+	}	//end of for loop
+
+	//output the even sum
+	cout << "Sum of even numbers between " << firstNum << " and " << secondNum 
+		 << ": \n" << evenSum << endl;
+	
+	//initialize oddSum variable, then calculate the sum of the odd numbers
+	oddSum = 0;
+    for(int odd = firstNum; odd >= firstNum && odd <= secondNum; odd++)
+    {
+		//check if odd and add to total
+    	if(odd % 2 != 0)
+    	oddSum += odd;
+	}	// end of for loop
+	
+	//output the odd sum
+	cout << "Sum of odd numbers between " << firstNum << " and " << secondNum 
+		 << ": \n" << oddSum << endl;	
+	
+	
+    return 0;
+}
+

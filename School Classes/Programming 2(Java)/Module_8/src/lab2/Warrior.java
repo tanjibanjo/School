@@ -1,0 +1,28 @@
+//************************************************************************
+// Author: Lane Pollock
+// Date: 10 Dec 2024
+// Language: Java
+// Assignment: Lab 2: Prototype Pattern
+// Description: Warrior class to extend GameCharacter
+//************************************************************************
+
+
+package lab2;
+
+public class Warrior extends GameCharacter{
+	
+	//constructor
+	public Warrior() {
+		this.characterType = "Warrior";
+		this.attackPower = 60;
+		this.defensePower = 80;
+		this.healthPoints = 100;
+	}
+	
+	@Override
+	void play() {
+		System.out.println("The warrior does " + this.attackPower
+				+ " damage upon attack.");
+	}
+
+}

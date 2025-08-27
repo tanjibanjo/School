@@ -1,0 +1,139 @@
+//************************************************************************
+//  Author: Lane Pollock
+//  Date: 7 March 2024
+//  Language: C++
+//  Assignment: Module 4 - Lab 1 : Override addNumbers
+//  Lab Purpose/ Description: Create a program that demonstrates function
+//			      overloading with calculator operations(add)
+//************************************************************************
+
+#include <iostream>
+using namespace std;
+
+//function protoypes
+void displayMenu();
+int addNumbers(int, int);
+int addNumbers(int, int, int);
+double addNumbers(double, double);
+double addNumbers(double, double, double);
+
+
+int main()
+{
+    //declare local variables
+    int userChoice, num1, num2, num3;
+    double dbl1, dbl2, dbl3;
+	
+    do
+    {
+	//call function to display menu to the user
+	displayMenu();
+		
+	//prompt for user to enter in their choice
+	cout << "\nPlease enter your choice, or 5 to quit: ";
+	cin >> userChoice; //store choice
+		
+	//switch for add functions
+	switch(userChoice)
+	{
+	    case 1: //add two int
+		//prompt user for two integers to add
+		cout << "What integers would you like to add?\n"
+		     << "Number 1: ";
+		cin >> num1;
+		cout << "Number 2: ";
+		cin >> num2;
+		//call function to add the integers and display
+		cout << num1 << " + " << num2 << " = " 
+		     << addNumbers(num1, num2) << endl << endl;
+	    break;
+	    case 2: //add three int
+        	//prompt user for three integers
+		cout << "What integers would you like to add?\n"
+		     << "Number 1: ";
+        	cin >> num1;
+		cout << "Number 2: ";
+		cin >> num2;
+		cout << "Number 3: ";
+		cin >> num3;
+	 	//call function to add the integers and display
+		cout << num1 << " + " << num2 << " + " << num3 << " = " 
+		     << addNumbers(num1, num2, num3) << endl << endl;
+	    break;
+	    case 3: //add two doubles
+		//prompt for two doubles
+		cout << "What doubles would you like to add?\n"
+		     << "Double 1: ";
+		cin >> dbl1;
+		cout << "Double 2: ";
+		cin >> dbl2;
+		//call function to add doubles and display
+		cout << dbl1 << " + " << dbl2 << " = "
+		     << addNumbers(dbl1, dbl2) << endl << endl;
+	    break;
+	    case 4: //add three doubles
+		//prompt user for three doubles
+		cout << "What doubles would you like to add?\n"
+	 	     << "Double 1: ";
+		cin >> dbl1;
+		cout << "Double 2: ";
+		cin >> dbl2;
+		cout << "Double 3: ";
+		cin >> dbl3;
+		//call function to add the integers and display
+		cout << dbl1 << " + " << dbl2 << " + " << dbl3 << " = " 
+		     << addNumbers(dbl1, dbl2, dbl3) 
+		     << endl << endl;
+	    break;
+	    case 5: //exit program
+		cout << "Thank you for using the calculator. Goodbye.\n";
+	    break;
+		default: //invalid entry
+		cout << "Invalid entry. Please try again.\n";
+	    break;
+	} // end of switch
+		
+    }while(userChoice != 5); //while user choice is not 5(quit)
+	
+    return 0;
+}
+
+//function definitions
+
+//function to display menu to user
+void displayMenu()
+{
+    cout << "Welcome to the programming 1 calculator!\n"
+	 << "Menu:\n"
+	 << "1. Add two integers.\n"
+	 << "2. Add three integers.\n"
+	 << "3. Add two doubles.\n"
+	 << "4. Add three doubles.\n"
+	 << "5. Exit the program.\n";
+	
+}
+
+//function to add two integers and return the sum
+int addNumbers(int num1, int num2)
+{
+    return num1 + num2;
+}
+
+//function to add three integers and return the sum
+int addNumbers(int num1, int num2, int num3)
+
+{
+    return num1 + num2 + num3;
+}
+
+//function to add two doubles and return the sum
+double addNumbers(double dbl1, double dbl2)
+{
+    return dbl1 + dbl2;
+}
+
+//function to add three doubles and return the sum
+double addNumbers(double dbl1, double dbl2, double dbl3)
+{
+    return dbl1 + dbl2 +  dbl3;
+}

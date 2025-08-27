@@ -1,0 +1,19 @@
+package lab2;
+
+public class Archer extends GameCharacter{
+	
+	//constructor
+	public Archer() {
+		this.characterType = "Archer";
+		this.attackPower = 70;
+		this.defensePower = 60;
+		this.healthPoints = 75;
+	}
+	
+	@Override
+	void play() {
+		System.out.println("The archer's arrows do " + this.attackPower
+				+ " damage.");
+	}
+
+}

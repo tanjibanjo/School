@@ -1,0 +1,133 @@
+//************************************************************************
+//  Author: Lane Pollock
+//  Date: 24 Apr 2024
+//  Language: C++
+//  Assignment: Lab 7.3 - Employee
+//  Lab Purpose/ Description: Create a program to hold an array of
+//   employee structures and display various information
+//************************************************************************
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+//structure definition
+struct Employee
+{
+    string name;
+    int empID;
+    int age;
+    string gender;
+    float salary;
+};
+
+//function prototypes
+void getInfo(Employee[], int);
+void printInfo(Employee[], int);
+void printHighest(Employee[], int);
+float averageSalary(Employee[], int);
+
+int main()
+{
+    //declare local variables
+    const int ARRAY_SIZE = 3;
+    Employee employeeArray[ARRAY_SIZE];
+    
+    //call function to get the info for the employee structures
+    getInfo(employeeArray, ARRAY_SIZE);
+    
+    //display the employees and their info
+    printInfo(employeeArray, ARRAY_SIZE);
+    
+    //call function to print highest paid employee
+    printHighest(employeeArray, ARRAY_SIZE);
+    
+    //call function to return average salary and display
+    cout << "Average Salary: $" 
+	 << averageSalary(employeeArray, ARRAY_SIZE)
+         << endl << endl;
+
+    return 0;
+}
+
+//function definitions
+
+//function to get info from user to populate employee structures
+void getInfo(Employee pArray[], int size)
+{
+    //loop through array to get employee info
+    for(int i = 0; i < size; i++)
+    {
+        cout << "Please enter employee " << i+1 << " name: ";
+        getline(cin, pArray[i].name);
+        cout << "Please enter employee " << i+1 << " ID: ";
+        cin >> pArray[i].empID;
+        cout << "Please enter employee " << i+1 << " age: ";
+        cin >> pArray[i].age;
+        cout << "Please enter employee " << i+1 << " gender: ";
+        cin >> pArray[i].gender;
+        cout << "Please enter employee " << i+1 << " salary: $";
+        cin >> pArray[i].salary;
+        cout << endl;
+        //clear input buffer
+        cin.ignore();
+        
+    }
+}
+
+//function to print the employe info
+void printInfo(Employee pArray[], int size)
+{
+    cout << fixed << setprecision(2); //set for money
+    //header
+    cout << "----------------------------------------------------------\n"
+         << left << setw(18) << "|Name|" << setw(15) << "|Employee ID|"
+         << setw(7) << "|Age|" << setw(9) << "|Gender|" << "|Salary|"
+         << endl;
+    cout << "----------------------------------------------------------"
+	 << endl;
+    
+    //loop through the array to display the employee info
+    for(int i = 0; i < size; i++)
+    {
+        cout << setw(18) << pArray[i].name << setw(15)
+             << pArray[i].empID << setw(7) << pArray[i].age
+             << setw(9) << pArray[i].gender << "$" << pArray[i].salary
+             << endl;
+    }
+        
+    cout << "----------------------------------------------------------"
+	 << endl;
+}
+
+//function to find and display the highest paid employee
+void printHighest(Employee pArray[], int size)
+{
+    //local variables
+    int highest = 0;
+    
+    //loop to identify the highest paid employee's location
+    for(int i = 1; i < size; i++)
+    {
+        if(pArray[i].salary > pArray[highest].salary)
+            highest = i;
+    }
+    
+    //print highest paid employee
+    cout << "Highest earning employee: " << pArray[highest].name << " - $"
+         << pArray[highest].salary << endl;
+}
+
+//function to calculate and return the average salary
+float averageSalary(Employee pArray[], int size)
+{
+    //local variables
+    float total = 0;
+    
+    //loop through array to add to total
+    for(int i = 0; i < size; i++)
+        total += pArray[i].salary;
+        
+    //return the average of the salaries
+    return total / size;
+}

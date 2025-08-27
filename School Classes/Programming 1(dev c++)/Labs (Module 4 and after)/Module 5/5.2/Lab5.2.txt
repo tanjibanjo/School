@@ -1,0 +1,228 @@
+//************************************************************************
+//  Author: Lane Pollock
+//  Date: 26 March 2024
+//  Language: C++
+//  Assignment: Lab 5.2: Enumerations
+//  Lab Purpose/ Description: Create a program to prompt user for a number
+//      then display the corresponding day and month with enumerations	//************************************************************************
+
+#include <iostream>
+using namespace std;
+
+//enumerations
+
+//enum for days of the week
+enum DaysOfWeek
+{
+    MONDAY, //0
+    TUESDAY, //1
+    WEDNESDAY, //2
+    THURSDAY, //3
+    FRIDAY, //4
+    SATURDAY, //5 
+    SUNDAY, //6
+};
+
+//enum for months of the year
+enum MonthsOfYear
+{
+    JANUARY, //0
+    FEBRUARY, //1
+    MARCH, //2
+    APRIL, //3
+    MAY, //4
+    JUNE, //5
+    JULY, //6
+    AUGUST, //7
+    SEPTEMBER, //8
+    OCTOBER, //9
+    NOVEMBER, //10
+    DECEMBER, //11
+};
+
+//function prototypes
+
+void printDay(DaysOfWeek);
+void printMonth(MonthsOfYear);
+
+int main()
+{
+    //declare local variables
+    int userDay, userMonth;
+    DaysOfWeek day; 
+    MonthsOfYear month;
+	
+    //prompt user for a choice of day
+    cout << "Please enter a number between 1-7: ";
+    cin >> userDay;
+	
+    //switch on userDay to assign it to a day of the week
+    switch(userDay)
+    {
+	case 1:
+	    day = MONDAY;
+	    break;
+	case 2:
+	    day = TUESDAY;
+	    break;
+	case 3:
+	    day = WEDNESDAY;
+	    break;
+	case 4:
+	    day = THURSDAY;
+	    break;
+        case 5:
+	    day = FRIDAY;
+	    break;
+	case 6:
+	    day = SATURDAY;
+	    break;
+	case 7:
+	    day = SUNDAY;
+	    break;
+	default:
+	    cout << "Invalid choice.\n";
+	    break;
+    } //end of switch
+	
+    //display the day of the week using printDay function
+    cout << "The day is ";
+    printDay(day);
+	
+    //prompt user for choice 1-12
+    cout << "Please enter a number between 1-12: ";
+    cin >> userMonth;
+	
+    //switch on userMonth to assign it to a month of the year
+    switch(userMonth)
+    {
+	case 1:
+	    month = JANUARY;
+	    break;
+	case 2:
+	    month = FEBRUARY;
+	    break;
+	case 3:
+	    month = MARCH;
+	    break;
+	case 4:
+	    month = APRIL;
+	    break;
+	case 5:
+	    month = MAY;
+	    break;
+	case 6:
+	    month = JUNE;
+	    break;
+	case 7:
+	    month = JULY;
+	    break;
+	case 8:
+	    month = AUGUST;
+	    break;
+	case 9:
+	    month = SEPTEMBER;
+	    break;
+	case 10:
+	    month = OCTOBER;
+	    break;
+	case 11:
+	    month = NOVEMBER;
+	    break;
+	case 12:
+	    month = DECEMBER;
+	    break;
+	default:
+	    cout << "Invalid choice.\n";
+	    break;	
+    } //end of switch
+	
+    //use printMonth function to display the month to the user
+    cout << "The month is ";
+    printMonth(month);
+	
+    return 0;
+} //end of main
+
+//fucntion definitions
+
+//function to switch and display month to user
+void printMonth(MonthsOfYear choice)
+{
+    //switch using enumerations
+    switch(choice)
+    {
+	case JANUARY:
+	    cout << "January.\n";
+	    break;
+	case FEBRUARY:
+	    cout << "February.\n";
+	    break;
+	case MARCH:
+	    cout << "March.\n";
+	    break;
+	case APRIL:
+	    cout << "April.\n";
+	    break;
+	case MAY:
+	    cout << "May.\n";
+	    break;
+	case JUNE:
+	    cout<< "June.\n";
+	    break;
+	case JULY:
+	    cout << "July.\n";
+	    break;
+	case AUGUST:
+	    cout << "August.\n";
+	    break;
+	case SEPTEMBER:
+	    cout << "September.\n";
+	    break;
+	case OCTOBER:
+	    cout << "October.\n";
+	    break;
+	case NOVEMBER:
+	    cout << "November.\n";
+	    break;
+	case DECEMBER:
+	    cout << "December.\n";
+	    break;
+	default: //no need for default case
+	    break;
+    }
+}
+
+
+//function to switch and print the day of the week
+void printDay(DaysOfWeek choice)
+{
+    //switch the user's choice using enumeration
+    switch(choice)
+    {
+	case MONDAY:
+	    cout << "Monday.\n";
+	    break;
+	case TUESDAY:
+	    cout << "Tuesday.\n";
+	    break;
+	case WEDNESDAY:
+	    cout << "Wednesday.\n";
+	    break;
+	case THURSDAY:
+	    cout << "Thursday.\n";
+	    break;
+	case FRIDAY:
+	    cout << "Friday.\n";
+	    break;
+	case SATURDAY:
+	    cout << "Saturday.\n";
+	    break;
+	case SUNDAY:
+	    cout << "Sunday.\n";
+	    break;
+	default: //no need for default case
+	    break;
+    }
+}
+

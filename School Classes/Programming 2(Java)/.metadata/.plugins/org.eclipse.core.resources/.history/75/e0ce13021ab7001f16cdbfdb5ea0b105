@@ -1,0 +1,27 @@
+package lab2;
+
+import java.util.Hashtable;
+
+public class CharacterStore {
+	//create hashtable to store classes in
+	private static Hashtable<String, GameCharacter> characterMap = new Hashtable<>();
+	
+	//method that returns gameCharacter based on key(char type)
+	public static GameCharacter getCharacter(String characterType) {
+		GameCharacter cachedCharacter = characterMap.get(characterType);
+		return (GameCharacter) cachedCharacter.clone();
+	}
+	
+	//for each character, run query and create character 
+	public static void loadCache() {
+		Warrior warrior = new Warrior();
+		characterMap.put("Warrior", warrior);
+		
+		Mage mage = new Mage();
+		characterMap.put("Mage", mage);
+		
+		Archer archer = new Archer();
+		characterMap.put("Archer", archer);
+	}
+
+}

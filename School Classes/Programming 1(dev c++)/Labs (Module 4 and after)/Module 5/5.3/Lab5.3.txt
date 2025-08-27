@@ -1,0 +1,83 @@
+//************************************************************************
+//  Author: Lane Pollock
+//  Date: 27 Mar 2024
+//  Language: C++
+//  Assignment: Lab 5.3: Create Namespaces
+//  Lab Purpose/ Description: Create two namespaces with matching 
+//	functions to avoid naming conflicts
+//************************************************************************
+
+#include <iostream>
+using namespace std;
+
+
+//define namespaces
+namespace namespace1
+{
+    void displayMessage();
+    int addNumbers(int, int);
+}
+
+namespace namespace2
+{
+    void displayMessage();
+    double addNumbers(double, double);
+}
+
+
+//function prototypes
+
+int main()
+{
+    //declare local variables
+    int num1, num2;
+    double dbl1, dbl2;
+	
+    //display hello from namespace1
+    namespace1::displayMessage();
+    //get two ints to add
+    cout << "Enter in two integers to add.\n";
+    cin >> num1 >> num2;
+	
+    //call function to add numbers and display
+    cout << num1 << " + " << num2 << " = " 
+	 << namespace1::addNumbers(num1, num2) << endl;
+		 
+    //display hello from namespace2
+    namespace2::displayMessage();
+    //get two doubles to add
+    cout << "Enter two doubles to add.\n";
+    cin >> dbl1 >> dbl2;
+	
+    //call function from namespace2 to add doubles and print answer
+    cout << dbl1 << " + " << dbl2 << " = " 
+	 << namespace2::addNumbers(dbl1, dbl2) << endl;
+
+    return 0;
+}
+
+//function definitions
+
+//function in namespace1 to display hello message
+void namespace1::displayMessage()
+{
+    cout << "Hello from Namespace1!\n";
+}
+
+//function in namespace2 to display hello message
+void namespace2::displayMessage()
+{
+    cout << "Hello from Namespace2!\n";
+}
+
+//function in namespace1 to add ints
+int namespace1::addNumbers(int x, int y)
+{
+    return x + y;
+}
+
+//function in namespace2 to add doubles
+double namespace2::addNumbers(double x, double y)
+{
+    return x + y;
+}

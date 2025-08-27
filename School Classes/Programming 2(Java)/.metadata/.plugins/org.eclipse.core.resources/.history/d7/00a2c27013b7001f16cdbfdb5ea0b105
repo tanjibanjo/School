@@ -1,0 +1,14 @@
+package lab1;
+
+public class ReportFooter {
+	//instance variables
+	private static volatile ReportFooter instance;
+	private String footer;
+	
+	//private constructor
+	private ReportFooter() {
+		this.footer = "The leading companu in development with:\n" 
+				+ "\tJava    C++    Python    HTML/CSS\n";
+	}
+
+}

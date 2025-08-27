@@ -1,0 +1,175 @@
+//************************************************************************
+//	Author: Lane Pollock
+//	Date: 13 March 2024
+//	Language: C++
+//	Assignment: Learning Outcome CO-5: Sam's Coffee Shop
+//	Lab Purpose/ Description: Write a menu driven program that makes Sam's
+//							  Coffee Shop operational							 
+//************************************************************************
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+//global variables allowed by lab
+const double SMALL_COFFEE = 1.75, MEDIUM_COFFEE = 1.90, 
+			 LARGE_COFFEE = 2.00;
+int smCounter = 0, medCounter = 0, lgCounter = 0;
+
+//function prototypes
+void printHeader();
+void printMenu();
+void sellCoffee();
+void showTotals();
+void coffeeAmount();
+void showProfit();
+
+
+int main()
+{
+	//declare local variables
+	int userChoice;
+	
+	//print header
+	printHeader();
+		
+	//set output for money
+	cout << fixed << setprecision(2);
+	
+	do
+	{
+		printMenu(); //print the menu to start program
+		cin >> userChoice;
+		cout << endl;
+
+		
+		switch(userChoice) //switch choice for functions
+		{
+			case 1: //sell coffee
+				//call function
+				sellCoffee();
+			break;
+			case 2: //show cups and amount sold by size
+				//call function
+				showTotals();
+			break;
+			case 3: //show how much coffee is sold
+				//call function
+				coffeeAmount();
+			break;
+			case 4: //show amount of profit made
+				//call function
+				showProfit();
+			break;
+			case 5: //exit program
+				cout << "Shutting Down...\n";
+			break;
+			default: //invalid
+				cout << "Invalid input. Please try again.\n";
+		}
+		
+ 	} while(userChoice != 5);
+	
+    return 0;
+}
+
+//function definitions
+
+//function to print header
+void printHeader()
+{
+	cout << "*************************************************\n"
+		 << "*               Sam's Coffee Shop               *\n"
+		 << "*************************************************\n";
+}
+
+
+//function to print the menu
+void printMenu()
+{ 
+	cout << "Please make a selection from the following menu: \n"
+		 << "1: Sell a coffee\n"
+		 << "2: Show number of cups sold by size\n"
+		 << "3: Show total amount of coffee sold\n"
+		 << "4: Show total profit\n"
+		 << "5: Exit program\n"
+		 << "*************************************************\n";
+}
+
+
+//function to process coffee sales
+void sellCoffee()
+{
+	//local variables
+	int coffeeSize;
+	
+	
+	do
+	{
+		cout << "What size coffee?\n"
+			 << "1: Small\n"
+			 << "2: Medium\n"
+			 << "3: Large\n"
+			 << "4: Return\n";
+			 //return to menu option in case of misinput or multiple sales
+		cin >> coffeeSize; //get choice of size
+		
+		switch(coffeeSize) //switch to return total and increment counter
+		{
+			case 1:
+				cout << "Your total is $" << SMALL_COFFEE << endl <<endl;
+				smCounter++; //increment counter for small coffee
+			break;
+			case 2:
+				cout << "Your total is $" << MEDIUM_COFFEE << endl << endl;
+				medCounter++; //increment counter for medium coffee
+			break;
+			case 3:
+				cout << "Your total is $" << LARGE_COFFEE << endl << endl;
+				lgCounter++; //increment counter for large coffee
+			break;
+			case 4:
+				cout << "Returning to menu...\n\n";
+			break;
+			default:
+				cout << "Invalid input. Try again or return to menu.\n";
+			break;		
+		}//end of switch
+		
+	} while(coffeeSize != 4);
+}
+	
+//function to show total cups and amount sold by size
+void showTotals()
+{
+	cout << "Cups of coffee sold:\n"
+		 << "Small:  " << smCounter << " cups for $" 
+		 << (smCounter * SMALL_COFFEE) << endl //sales times price
+		 << "Medium: " << medCounter << " cups for $"
+		 << (medCounter * MEDIUM_COFFEE) << endl //sales times price
+		 << "Large:  " << lgCounter << " cups for $"
+		 << (lgCounter * LARGE_COFFEE) << endl; //sales times price
+	cout << "Total: $"
+		 << ( (smCounter * SMALL_COFFEE) + (medCounter * MEDIUM_COFFEE)
+		    + (lgCounter * LARGE_COFFEE) ) << "\n\n"; //sales times price
+}
+
+                     
+//function to show amount of coffee sold
+void coffeeAmount()
+{
+	//account for ouces per cup size
+	cout << "The amount of coffee sold is " 
+		 << (smCounter * 9) + (medCounter * 12) + (lgCounter * 15)
+		 << " ounces.\n\n";
+}
+
+
+void showProfit()
+{
+	//total sales divided by 4 (25%)
+	cout << "The amount of profit made is: $"
+		 << ( (smCounter * SMALL_COFFEE) + (medCounter * MEDIUM_COFFEE)
+		    + (lgCounter * LARGE_COFFEE) ) / 4
+		 << endl << endl;
+}

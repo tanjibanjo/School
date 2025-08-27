@@ -1,0 +1,11 @@
+Lane Pollock
+14 Jun 2025
+Game Testing
+
+Game Critique
+
+The game that I decided to play was The Witcher 3. It’s an expansive open world game where you make decisions, slay monsters, and affect the world around you in all types of ways. Several main components are it’s combat, with swords and magic alike, it’s traveling system, where you can walk or ride your horse, and it’s open world, with side quests, npc to interact with, and mini games, like ‘Gwent’. With all this going on, there’s a couple things that I believe a tester would work with.
+
+One function that would be tested is the horse riding. There’s mounting the horse which can be tested at different speeds and from different height discrepancies as well. Then, while on the horse, you may test how the horse handles incoming trees or obstacles, how it interacts with other npcs or hostile enemies, or how it handles inclines, like up mountainsides. Finally, the dismounting could be tested at different speeds and terrain. A last function that could be tested is the gwent mechanics. There’s whole decks to balance, rules to implement and a player control scheme to make sure works to standard.
+
+With a game of this size and scope there are an incredible amount of functions and conditions to test, making it hard to truly see to everything. However, these are a couple functions that I believe would be tested in development.

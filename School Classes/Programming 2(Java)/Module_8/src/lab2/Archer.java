@@ -1,0 +1,28 @@
+//************************************************************************
+// Author: Lane Pollock
+// Date: 10 Dec 2024
+// Language: Java
+// Assignment: Lab 2: Prototype Pattern
+// Description: Archer class to extend GameCharacter
+//************************************************************************
+
+
+package lab2;
+
+public class Archer extends GameCharacter{
+	
+	//constructor
+	public Archer() {
+		this.characterType = "Archer";
+		this.attackPower = 70;
+		this.defensePower = 60;
+		this.healthPoints = 75;
+	}
+	
+	@Override
+	void play() {
+		System.out.println("The archer's arrows do " + 
+							this.attackPower + " damage.");
+	}
+
+}

@@ -1,0 +1,47 @@
+//************************************************************************
+//  Author: Lane Pollock
+//  Date: 11 Apr 2024
+//  Language: C++
+//  Assignment: Learning Outcome - Arrays 2 (challenge lab)
+//  Lab Purpose/ Description: Write a program to create and modify
+//      arrays with user defined functions
+//************************************************************************
+
+#include <iostream>
+#include "arrayFunctions.cpp"
+using namespace std;
+
+int main()
+{
+    //declare local variables
+    const int ARRAY_SIZE = 10;
+    int randomArray[ARRAY_SIZE];
+	
+    //call function to populate array with random numbers
+    cout << "Populating array...\n";
+    fillArray(randomArray, ARRAY_SIZE);
+	
+    //call function to display the array
+    displayArray(randomArray, ARRAY_SIZE);
+	
+    //call function to find the sum of array and display
+    cout << "The sum of the array is: " 
+	 << findSum(randomArray, ARRAY_SIZE) << endl;
+		 
+    //call functions to display highest and lowest value 
+    cout << "Highest value: " 
+	 << highestNumber(randomArray, ARRAY_SIZE) << endl;
+    cout << "Lowest value: "
+	 << lowestNumber(randomArray, ARRAY_SIZE) << endl;
+		 
+    //call function to sort array
+    cout << "Sorting array...\n";
+    bubbleSort(randomArray, ARRAY_SIZE);
+	
+    //display sorted array
+    cout << "After sorting, array is: \n";
+    displayArray(randomArray, ARRAY_SIZE);
+
+    return 0;
+}
+
