@@ -26,8 +26,14 @@ WE CAN BUILD ANY OPERATION WITH ONLY USING NAND GATES
 PROOFS
 	1)NOT(x) = (x NAND x) - make not by using a nand gate with the same input 
 	2)(x AND y) = NOT(x NAND y)
+	3)A OR B = NAND(Not(a), Not(b))
+	4)XOR = (a and NOT(b)) or ((Not(a) and b))
 
 HARDWARE DESIGN LANGUAGE
+	-every connection has to be named in hdl
+	-describe each part one at a time
+	-nand gates make up the foundation, but then each component can build upon itself, 
+		creating more complicated circuits
 	
 
 BUILDING AN AND GATE
