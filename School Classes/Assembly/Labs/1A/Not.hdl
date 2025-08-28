@@ -1,0 +1,14 @@
+// Lane Pollock
+// 27 Aug 2025
+// Lab 1A
+/**
+ * Not gate:
+ * if (in) out = 0, else out = 1
+ */
+CHIP Not {
+    IN in;
+    OUT out;
+
+    PARTS:
+    Nand(a= in, b= in, out= out);
+}
