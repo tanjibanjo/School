@@ -1,0 +1,159 @@
+Lane Pollock
+Notes on unity scripting, using C#
+***********************************
+public class CLASS : MonoBehaviour {...functions...}
+
+***********************************
+SCRIPTS
+-------
+can add scripts and create within the finder(ui)
+
+---------
+VARIABLES
+---------
+declare and initialize variables just like cpp, semicolon to finish
+
+	-Debug.Log() //access value of any variable in the game
+		Debug.Log(myInt); //example
+		-if you attach that to an object in game, press play, value is shown in the 
+		 console
+functions still use return type and {} - just like cpp, name functions with PascalCase
+parameters same as cpp
+
+***********************************
+SYNTAX
+------
+-dot notation
+-semicolon terminates statements, just like cpp
+//for comments
+/* ... */ for multiline
+- floats are initialized with 'f' after the number
+	ex: float num1 = 5.0f
+-=, +=, *= remain
+
+
+DELTA TIME - Time.deltaTime //use to keep track of time passing in a consistent manner
+
+INPUT - Input.GetKeyDown(KeyCode.INSERT_KEY_HERE) //replace that with whatever key you want
+
+***********************************
+LOOPS
+-----
+
+- all the same as cpp!
+
+***********************************
+SCOPE
+-----
+always remember the access modifiers for variables defined in the class, not just in functions
+
+- public - accessed from outside the class and editable/shown in the unity inspector**
+	- good to use for testing within the editor
+	- variables modified in the inspector while running will not be changed or saved**
+
+- private - is the default modifier for variables in a class!!
+	- good to write it out anyways
+
+USE 'NEW' KEYWORD FOR CREATING INSTANCES OF CLASSES
+
+***********************************
+AWAKE AND START
+
+- TWO SCRIPTS CALLED AUTOMATICALLY WHEN SCRIPT IS LOADED
+- awake is called first and is good for setting up references between scripts and initialization
+- start is called after, before the first update, but only if the script component is enabled
+	- this allows you to delay any part of the init code until its needed
+
+** these are only called once 
+
+***********************************
+UPDATE AND FIXED UPDATE
+-----------------------
+void Update() 
+	is called every frame, and is used for all types of things 
+-it is not consistent, if frames take longer than the next the update is called irregularly
+
+void FixedUpdate()
+	is will have the same amnt of time between calls
+-anything that has a RigidBody should use fixed update for physics stuff
+
+***********************************
+MonoBehavior scripting wizard
+-----------------------------
+
+cntrl-SHIFT-'M' to launch wizard
+	- then choose the methods you want to add
+	- press okay to insert methods into the code
+	- i think this lets you browse special functions available within unity to implement
+
+***********************************
+VECTORS
+-------
+- a line drawn between two points
+- have a length, known as magnitude
+
+2D VECTORS
+	- goes from origin to any point in a plane, implying it has a direction
+	- good to use for distance and relative computing
+	- also used for velocity
+3D VECTORS
+	- work the same as 2D but extrapolated into the z axis, depth
+	
+Unity works on a left handed coordinate system
+	- meaning, thumb is x axis, finger is y
+	- finding the magnitude is the same as 2d - sqrt(x^2 + y^2 + z^2)
+	HELPER FUNCTION - use Vector3.magnitude() function to get the magnitude easy!
+
+DOT PRODUCT - takes the values of two vectors and produces a scaler, a single value
+	- take their parts and multiply them together to find the sum of the products
+	- (Ax * Bx) + (Ay * By) + (Az * Bz) = Dot Product
+		- IF THE DOT PRODUCT OF TWO VECTORS IS 0, THEY ARE PERPENDICULAR
+	HELPER FUNCTION - Vector3.Dot(VectorA, VectorB)
+
+CROSS PRODUCT
+	-instead of returning a scalar, returns a vector that is perpendicular to the first two
+	Vector3.Cross(VectorA, VectorB)
+
+	- one use is if you were wanting to apply rotational torque, 
+		- if you know the direction facing, and what direction it needs to face, can 
+			find the axes to rotate on
+***********************************
+ENABLING AND DISABLING COMPONENTS
+---------------------------------
+GetComponent<COMPONENT>(); //returns a component attached to the object
+
+to enable/disable components, use the .enabled flag and set to !component.enabled; 
+	-using ! to invert the value, making it a toggle instead of writing xt code
+	-scripts are also components and you can use the .enable to toggle them too
+
+- deactivating a parent object will deactivate the child component as well
+- to check if active in the scene or heirarchy
+	object.activeSelf();
+	object.activeInHeirarchy(); //can debug.log these to see what's going on
+
+***********************************
+TRANSLATE AND ROTATE
+---------------------
+-translate
+	- put into update()
+	- transform.Translate(new Vector(0, 0, 1); // updating every frame 
+		-can actually work around this by multiplying Vector3.forward (built in) by T
+		 ime.deltaTime and moveSpeed
+		
+	- now this is meters per second, not meters per frame**
+	- moving backwards, use -Vector3.forward to negate the call
+
+-Rotate
+	- transform.Rotate(Vector3.up, turnspeed (or -turnSpeed) * Time.deltaTime);
+	- Vector3 works in the local axis, not the world axis
+	- careful with using rotate with physics objects
+
+***********************************
+LOOK AT
+-------
+
+- make a game object look at another object in the world
+INSIDE OF UPDATE:
+	- can call transform.LookAt(target); //target is type transform variable in the script class
+	- this look at script can attach to the camera, then apply the target object within the inspector (editor)
+	
