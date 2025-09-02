@@ -156,4 +156,239 @@ LOOK AT
 INSIDE OF UPDATE:
 	- can call transform.LookAt(target); //target is type transform variable in the script class
 	- this look at script can attach to the camera, then apply the target object within the inspector (editor)
+
+***********************************
+LINEAR INTERPOLATION
+--------------------
+- finding a value that is at some percentage between two numbers 
+EX: 
+	float result = Mathf.Lerp(3f, 5f 0.5f); //the result is 4, which is 50% between 3 and 5
+
+- other lerp functions are Color.Lerp and Vector3.Lerp
+- can be used to smoothly transition between values in code
+
+EX:
+	(in update)
+	light.intensity = Mathf.Lerp(light.intensity, 8f, 0,5f * Time.deltaTime);
+
+***********************************
+DESTROY
+-------
+-used to destroy an object during runtime 
+
+use - Destroy(OBJECT)
+
+- in the inspector, we can add an object to be removed
+- also can use to destroy components instead of full objects
+
+Destroy(GetComponent<MeeshRenderer>()); //this makes the object not visually rendered, but still in game
+
+-this can take a number float as a time delay! -in seconds
+
+***********************************
+GETBUTTON AND GETKEY
+--------------------
+-uses Unity's input class
+
+GetKey names the keys using key codes
+EX:
+	bool down = Input.GetKeyDown(KeyCode.Space);
+
+-good for keyboard but recommended to make buttons and specify own controls
+
+INPUT MANAGER gives ability to name and edit buttons
+	edit - project settings - input
+
+then you can reference using a string
+
+------------
+-these have three states that return t/f
+1. GetButtonDown - returns t/f if pressed (first frame)
+2. GetButton - true if holding over time, getbuttondown turns to false after first frame
+3. GetButtonUp - true when released, GetButton goes false (this is also for only one frame)
+
+-this would be real easy for sprites and stuff 
+
+***********************************
+GET AXIS
+--------
+- returns a float between -1 and positive 1
+-edit - project settings - input menu
+
+- gravity of the axis effects how fast the value returns to zero
+- sensitivity controls how fast the control value reaches 1 or -1
+- the dead zone is a zone where input is not registered, like with the joystick small movements won't register
+
+float h = Input.GetAxis("Horizontal");
+float y = input.GetAxis("Verticle");
+
+- can also use GetAxisRaw that returns only whole numbers
+	- good for 2d stuff that needs very precise control
+
+***********************************
+ON MOUSE DOWN
+--------------
+-can identify a click on something, whether it is a uI element or an object
+
+void OnMouseDown(); function**
+
+//Adding force
+EX:
+	rb = GetComponent<RigidBody>(); //get the collision component
 	
+	void OnMouseDown() {
+		rb.AddForce(-Transform.forward * 500f); //apply force to the component making it move backwards
+		rb.useGravity = true; //set gravity to be enabled, allowing the component to fall down
+	}
+
+***********************************
+GET COMPONENT
+--------------
+-a script is considered a custom component
+-access other scripts and components with GetComponenet<TYPE>();
+
+-variables in one script/class that are of other scripts or objects REFERENCE an instance of that component
+-can also be used to get components on other objects in the game
+
+-get component is expensive, call it as little as possible
+-good practice to call in the awake or start functions and not much else
+
+***********************************
+DELTA TIME
+----------
+when used in update(), Time.deltaTime is equal to the time between frames
+- Time Scale can be used to 'slow down time'. This is another variable of the Time class. 
+	- default value is 1, which is 1 second of game time takes 1 real world seconds.
+	- in 'bullet time', this could be set to .5 to slow down the game
+- you could set the menu, like a pause menu top use unscaled time, allowing normal use and the game in the meantime to have a scale of 0, stopping play in the background
+***********************************
+DATA TYPES
+----------
+value types - primitives, structs (like Vector3 and Quaternian)
+reference types - classes and their variables, like transform and game object
+
+- ref types contain the memory locations to variables
+- value types store variable itself
+
+**transform.position; = current position //returns a vector **
+
+***********************************
+CLASSES
+-------
+SCRIPT AND CLASS NAME HAVE TO BE THE SAME**
+
+- dedicated to one task ideally
+-constructors!
+	-default values, same stuff as cpp
+	-parameters and stuff
+
+- instantiating a class
+	- use 'new' keyword
+	public Class myClass = new Class(parameters, or not);
+
+-user 'ctor' to quickly set up another constructor on visual studio
+
+***********************************
+INSTANTIATE
+-----------
+creates clones of game objects
+- example: firing projectiles
+
+- each projectile would need to be instantiated then fired
+
+	Instantiate(OBJECT TO CLONE); //this is the most basic version, and puts the projectile at 0 (of the world)
+
+instead, we would use 3 parameter instantiate, taking object, position, and rotation
+	
+	you could then use the editor to fill in those object values after setting up the code.
+	variables in the script class can be set in the editor, there is not a 'constructor' necessarily for the overarching class, since it will be attached to an object and then can be edited in the engine
+
+	- to add force to the projectile, we can instantiate the projectile as a RigidBody, then add force to it!
+
+	RigidBody proj;
+	proj = Instantiate(projectile, barrelEnd.position, barrelEnd.rotation) as RigidBody;
+	proj.AddForce(barrelEnd.up * 250f); //moving upward
+
+*remember to remove the object as it will technically stay in world until then using Destroy
+
+***********************************
+ARRAYS
+------
+//syntax is a little different from cpp
+
+int[] myArray = new int[5]
+
+-then in start, you can initialize the array
+	void Start() { //initialize }
+
+-----
+or, you can declare and initialize at the same time of course
+int[] newArray = {12, 5, 3, 7, 9};
+
+//if the array is public, you can change it in the inspector
+
+------
+say we were getting all the players in the scene, we could make an array of them using the FindGameObjectsWithTag function:
+
+	void Start() {
+		players = GameObject.FindGameObjectsWithTag("Player");
+	}
+
+iterate through the array:
+	for(int i = 0; i < players.Length; i++) {
+		Debug.Log("Player numer "+i+" is named "+Player[i].name);
+	}
+
+***********************************
+INVOKE
+------
+enable you to schedule a function call after some specified time delay
+-time sensitive function  call!
+
+we could call a method in Start() {
+	invoke("Method", 2);
+}
+
+//then the method would be called in 2 seconds - use string name of the function as first parameter
+
+//NOTE - only return type void functions with no parameters can be called using Invoke
+
+--------
+INVOKE REPEATING
+	-use InvokeRepeating instead of Invoke
+		-it will take three parameters now
+		-string name of method, delay before call, and delay between each subsequent call of the method
+-to stop all instances
+	-use cancelInvoke() //if you want to only cancel one method, pass the method string name as parameter
+
+***********************************
+ENUMERATIONS
+------------
+
+enum Direction {North, East, South, West}; //declare the enums in the declaration, then close the statement with ;
+
+- you could set values as well , like {North = 20, South=15 ...}
+- also could add a data type for the enum itself, instead of int
+	enum Direction : short{North.....}
+
+	-changing type can help with optimization
+
+-then access with dot notation, like 
+	Direction myDirection = Direction.North
+
+***********************************
+SWITCH STATEMENTS
+------------------
+just like cpp
+
+works really well with enums
+
+switch(var) {
+	case 1:
+		code...
+		break;
+	default:
+		code...
+		break;
+
+this is just like cpp basically
