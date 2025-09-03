@@ -70,19 +70,45 @@ MULTI BIT BUSES
 	
 MULTIPLEXOR (mux)
 	
-	has three inputs, a, b, and sel
+	has two inputs, a, b, and selection
 		if sel == 0 output a
 		else output b
 
 	-can use this to program gates!
+	-can implement with two ang gates and an or gate, inverted twice** 
+		-becomes three nand gates
+	-mux do not combine input signals into an output signal, they are like selectors
+	
 
-DEMULTIPLEXOR
+DEMULTIPLEXOR (demux)
 	
 	like the inverse of the multiplexor,
 	receives one input and sel, and based on the sel, outputs either a or b
 	
 		if sel == 0, {a,b}={in,0}
 		else, {a,b}={0,in}
-	
+	-one of the outputs gets connected to the input bsaed on the # matching the selection
+
+MICROPROCESSORS
+	-arithmetic and logic unit (ALU) is what makes up the mp
+	-registers hold the data that the alu needs to do calculations, when it finishes the answer returns to the register(s)
+	-in order to tell the ALU what to do, we need the control unit to give it tasks
+	-then we need the Instruction Register to tell the control unit what to be done
+	-IR gets instruction from memory
+	-memory needs an address that comes from the program counert (PC)
+	-PC is controlled/updated by the control unit
+
+BINARY ARITHMETIC (ALU)
+	-how to convert from decimal to binary?
+		EX: 24
+		-divide by 2s
+		24/2 = 12R0 //if remainder is 0, keep going
+		12/2 = 6R0 
+		6/2 = 3R0
+		3/2 = 1R1
+		-now use the remainders, from the end up as the binary
+		24 (in decimal) = 11000 (binary)
+	 -SUBTRACTION
+		-borrowing is bad, so we have to account for that first
 	
 			
