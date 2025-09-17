@@ -1,0 +1,85 @@
+Lane Pollock
+Assembly
+notes on binary
+
+-------------------------------
+BINARY
+	- is a base 2, so each consecutive column is 2X the last
+	128, 64, 32, 16, 8, 4, 2, 1
+
+BINARY ADDITION
+	- start with the right most, just like normal
+	- 1 + 1 = 10, so 0 and carry the 1 
+	- 1 + 1 + 1 (carried) = 3, or 11 - so 1 and carry the 1
+	- so on and so forth
+
+8 BIT
+	- byte, 8 bits (0-255)
+	- so 8 bit games only have 255 values for colors, much less than these days
+
+32/64 BIT COMPUTERS
+	- up to 4.3 billion values on 32 bit graphics
+-------------------------------
+WHAT ABOUT FLOATS?
+	- IEEE - standard stores decimals kind of like scientific notation
+
+		in a floating point number, first bit is for sign (positive or negative), next 8 
+		bits for the exponent, then the reset for the significand 
+	
+LETTERS AS NUMBERS
+	- ASCII - 7 bit code to hold values of letters and symbols (128 total values)
+		- became 8 bit to extend to 256 values
+	- interoperability - now computers from different companies can transfer data 
+	- this didn't work for different languages
+
+	- UNICODE - universal coding scheme to encompass every language and symbol around world
+
+-------------------------------
+COMPUTATION - HOW IS IT DONE?
+
+ARITHMATIC UNIT
+	HALF ADDER
+		- two inputs, outputs sum and carry
+		- uses an xor gate, and an and gate
+	FULL ADDER
+		- three inputs, two outputs are the same
+		- use half adder to add A + B
+			- feed that result and C to another half adder
+			- output from there the sum
+			- then use an or gate on the carries from the halfs to output the carry
+	8 BIT ADDER
+		- take bits one by one from each 8 bit number, and send to half adder
+		- then, send the next pair of bits along with the carry from the first adder to 
+			full adders
+		- continue on until all 8 half been added
+		- the carry goes into each consecutive adder, then out from the last one
+LOGIC UNIT
+	
+ALU (both, but up a level or abstraction)
+	- has two inputs, and an operation code(4 bits)
+	- operation code tells what to perform
+	- output is 8 bits
+	- there are also flags, that are bit sized (overflow, zero, negative)
+
+-------------------------------
+2'S COMPLIMENT
+	- give up a bit to represent the sign of the number
+	- if 0, positive, 1 is negative
+		ex: 0000 (0), 0001 (1), 0010 (2)
+	
+	- for negative numbers (-x) represent using the positive number 2^n - x
+		ex: so for 4 bits, -3 would be (2^4 - 3) = 13 
+			(-3)  1101 = 13
+			(-4)  1100 = 12
+
+COMPUTING -X
+	- input: x
+	- output: -x(2s compliment)
+	- if we solve this, we can subtract!
+
+2^n - x = 1 + (2^n - 1) - x
+
+	- 2^n - 1 = 11111111
+	- this - x creates the flip of all the bits basically
+
+

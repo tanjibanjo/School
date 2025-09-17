@@ -1,0 +1,87 @@
+lane pollock
+notes on memory in computers - low level
+
+-----------------------
+how do we store memory, really?
+
+- we can use specific gates that can hold information in their circuits
+
+- using an OR GATE to record a 1
+	- this is done by sending the output to the B input, so if the input is one, B becomes 1
+	- now that B is 1, it will stay 1 permanently because no matter the A input, B is 1
+- using an AND GATE to record a 0
+	- we start both inputs at 1 in this case, which outputs 1
+	- then if the input changes to 0, it is passed onto B which holds 0 forever, no matter how A is changed
+
+- we can combine these in an AND-OR LATCH
+	- the circuit uses two inputs, set and reset
+	- set changes the input to 1, reset changes it back to 0
+	- if the set and reset are both 0, it just outputs the last input
+	- this latch can contain a single bit of memory
+
+- a GATED LATCH is a bigger version of this that uses a data input, and write enable input 
+	- the write enable wire controls whether the memory can be written to or not
+
+REGISTER - a group of latches working together, with the number of bits they can store called their width
+
+LATCH MATRIX - latches are organized in a grid, allowing for less wires in the hardware
+	- uses a row and column select test, allowing for a specific latch group to be used at a time
+	- saves tons of wire 
+
+ADDRESS - this is the intersection in the matrix that represents the location
+
+MULTIPLEXOR
+	- pass in a value, and it will choose the right location 
+
+256 BIT MEMORY
+	- needs an 8 bit address, data wire, write enable wire, and read enable wire for a total of 11
+	- now we have to put a bunch of these in a row to actually store anything 
+	
+-----------------------
+DFF- flip flop can remember the last state and do functions on the previous state
+	- state(t) = function(state(t-1))
+
+-----------------------
+1 BIT REGISTER
+	- if load(t-1) then out(t) = in(t-1)
+	- else out(t) = out(t-1)
+
+	
+	INPUT into one input of MUX
+	PREVIOUS OUTPUT (before final output) into the other input of the MUX
+	LOAD to choose between them
+
+	- the first time frame, we don't know what it outputs since we have no t-1 (in this example)
+
+-----------------------
+ram needs log(2)n bits for the address (n = number of registers)
+
+RAM8
+	- uses 8 registers, 3 bits for address(k)
+RAM64 
+	- uses 64 registers, 6 bits for address
+RAM512
+	- 512 reg, 9 bit address
+RAM4K 
+	- 4096 reg, 12 bit
+RAM16K
+	- 16384 reg, 14 bit address
+
+-----------------------
+COUNTERS
+	- increment numbers, using the past state!
+	- this is actually helpful because the computer needs to move on to the 'next' task after done
+	- needs a counter to help it move to the next
+
+	- support three controls
+		- RESET - fetch the first instruction
+		- NEXT - fetch the next instruction
+		- GOTO - fetch instruction n
+
+building the counter
+	- 16 but in and out with a load, inc, and reset control bit(s)
+	if (reset[t]==1) out(t+1) = 0 //if reset, go back to 0
+	else if (load[t]==1) out[t+1] = in[t] //put the value into in, and assert load bit
+	else if (inc[t]==1) out[t+1] = out[t] + 1 //default operation of the counter
+	else out[t+1] = out[t]
+
