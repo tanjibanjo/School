@@ -1,0 +1,39 @@
+lane pollock
+notes on memory in computers - low level
+
+-----------------------
+how do we store memory, really?
+
+- we can use specific gates that can hold information in their circuits
+
+- using an OR GATE to record a 1
+	- this is done by sending the output to the B input, so if the input is one, B becomes 1
+	- now that B is 1, it will stay 1 permanently because no matter the A input, B is 1
+- using an AND GATE to record a 0
+	- we start both inputs at 1 in this case, which outputs 1
+	- then if the input changes to 0, it is passed onto B which holds 0 forever, no matter how A is changed
+
+- we can combine these in an AND-OR LATCH
+	- the circuit uses two inputs, set and reset
+	- set changes the input to 1, reset changes it back to 0
+	- if the set and reset are both 0, it just outputs the last input
+	- this latch can contain a single bit of memory
+
+- a GATED LATCH is a bigger version of this that uses a data input, and write enable input 
+	- the write enable wire controls whether the memory can be written to or not
+
+REGISTER - a group of latches working together, with the number of bits they can store called their width
+
+LATCH MATRIX - latches are organized in a grid, allowing for less wires in the hardware
+	- uses a row and column select test, allowing for a specific latch group to be used at a time
+	- saves tons of wire 
+
+ADDRESS - this is the intersection in the matrix that represents the location
+
+MULTIPLEXOR
+	- pass in a value, and it will choose the right location 
+
+256 BIT MEMORY
+	- needs an 8 bit address, data wire, write enable wire, and read enable wire for a total of 11
+	- now we have to put a bunch of these in a row to actually store anything 
+	
