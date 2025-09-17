@@ -37,3 +37,51 @@ MULTIPLEXOR
 	- needs an 8 bit address, data wire, write enable wire, and read enable wire for a total of 11
 	- now we have to put a bunch of these in a row to actually store anything 
 	
+-----------------------
+DFF- flip flop can remember the last state and do functions on the previous state
+	- state(t) = function(state(t-1))
+
+-----------------------
+1 BIT REGISTER
+	- if load(t-1) then out(t) = in(t-1)
+	- else out(t) = out(t-1)
+
+	
+	INPUT into one input of MUX
+	PREVIOUS OUTPUT (before final output) into the other input of the MUX
+	LOAD to choose between them
+
+	- the first time frame, we don't know what it outputs since we have no t-1 (in this example)
+
+-----------------------
+ram needs log(2)n bits for the address (n = number of registers)
+
+RAM8
+	- uses 8 registers, 3 bits for address(k)
+RAM64 
+	- uses 64 registers, 6 bits for address
+RAM512
+	- 512 reg, 9 bit address
+RAM4K 
+	- 4096 reg, 12 bit
+RAM16K
+	- 16384 reg, 14 bit address
+
+-----------------------
+COUNTERS
+	- increment numbers, using the past state!
+	- this is actually helpful because the computer needs to move on to the 'next' task after done
+	- needs a counter to help it move to the next
+
+	- support three controls
+		- RESET - fetch the first instruction
+		- NEXT - fetch the next instruction
+		- GOTO - fetch instruction n
+
+building the counter
+	- 16 but in and out with a load, inc, and reset control bit(s)
+	if (reset[t]==1) out(t+1) = 0 //if reset, go back to 0
+	else if (load[t]==1) out[t+1] = in[t] //put the value into in, and assert load bit
+	else if (inc[t]==1) out[t+1] = out[t] + 1 //default operation of the counter
+	else out[t+1] = out[t]
+
