@@ -1,0 +1,114 @@
+lane pollock
+
+notes on the cpu
+
+------------------
+micro-architecture
+------------------
+we need registers to help store programs and data
+
+instruction table - contains an instruction, description, 4-bit opcode, and address/registers
+
+now we need an instruction address register - to store where we are in the program
+lastly, we need an instruction register
+
+-----
+1. INSTRUCTION ADDRESS REGISTER uses an address to access the ram and get data
+2. data value is passed to the INSTRUCTION REGISTER
+3. enter DECODE PHASE 
+	- read the opcode (in the start of data value) that corresponds to an instruction
+	- the rest of the data is a value/address (needed for the instruction)
+4. enter the EXECUTE PHASE
+	- fires the right set of wires to execute the task, then turns them off
+5. increment the instruction address register
+
+CLOCK triggers electrical signals to keep all of the cpu in sync and in time
+CONTROL UNIT is what designates all of the processes in the cpu
+
+- our cpu clocks these days is upwards in the Ghz (billions of clock cycles per second)
+------------------
+programs
+--------
+common instructions: (these are just example bit lengths, real cpus use 32/64bit or variable length stuff)
+	- LOAD_A - read RAM location into register A (to be stored) - takes 4-bit RAM address
+	- LOAD_B - same as above but for register B
+	- STORE_A - write from register A to RAM - takes 4 bit RAM address
+	- ADD - add two registers, store value in second reg. - takes two 2-bit register IDs
+	- SUB - same but subtract (throws negative flag if the result is a negative num)
+	- JUMP - update the instruction address to a new one (jump to new task) - 4-bit memory address
+	- JUMP_NEG - only jumps if the ALU negative flag is true
+	- JUMP_IF_EQUAL
+	- JUMP_IF_GREATER	
+	- HALT - stop cpu
+
+------------------
+HACK MACHINE
+
+- what we use in this class
+------------------
+write to a register:
+@35 //assign value 35 to A-register
+D = A //you have to assign to a first then move it over 
+------------------
+write to D register from memory address 20
+@20 //puts 20 in A
+D = M[A] //read location 20 of memory (like an array)
+------------------
+write to memory address 12 the value of 0
+@12 //set it
+M[A] = 0
+
+------------------
+INSTRUCTIONS
+-two types used in the hack model
+A and C
+
+A INSTRUCTIONS
+	- @10 - assigning values to A
+	- Most Significant Bit is always 0
+C INSTRUCTIONS
+	- actual action instructions
+	- starts with 1 1 1 [0/1] (opcode) _ _ _ _ _ _ (ALU) _ _ _ (where to store) _ _ _ _ (jump status)
+
+------------------
+EXAMPLE OF ASSEMBLY
+
+ADD TWO NUMBERS
+
+	@10 //A = 10
+	D = A //move value over
+	@0 //get the address, 0
+	M = D //put D value into M[A] implicitly it knows [A]
+	
+	@15
+	D = A
+	@1
+	M = D
+
+	//add
+	@1
+	D = M //read memory location 1 into D (15)
+	@2
+	M = D //move it into 2 bc the store location is the location of the second number
+	@0
+	D = M
+	@2
+	M = M + D
+
+JUMP CONDITIONS
+	(LOOP)
+		@2
+		M = M + 1
+		@1
+		M = M - 1
+		@LOOP
+		D ; JEQ //JEQ = jump if equal to zero
+
+	to make an unconditional loop, it would be the same as above other than:
+		@LOOP
+		0 ; JMP 
+
+TO COMPLETE A PROGRAM IT IS RECOMMENDED TO END EACH PROGRAM WITH AN INFINITE LOOP THAT KEEPS IT IN PLACE
+such as 
+	@6
+	0;JMP (jumps to 6)
