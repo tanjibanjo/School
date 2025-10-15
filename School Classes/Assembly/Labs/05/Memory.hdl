@@ -1,0 +1,26 @@
+// Lane Pollock
+// 10 Oct 2025
+// Lab 5A
+// memory 
+
+
+CHIP Memory {
+    IN in[16], load, address[15];
+    OUT out[16];
+
+    PARTS:
+    And(a=address[13], b=address[14], out=keyboard);
+    Not(in=keyboard, out=notkeyboard);
+    And(a=address[14], b=notkeyboard, out=screen);
+    Not(in=screen, out=notscreen);
+
+    And(a=load, b=notscreen, out=l1);
+    And(a=load, b=screen, out=l2);
+
+    RAM16K(in=in, address=address[0..13], load=l1, out=x1);
+    Screen(in=in, address=address[0..12], load=l2, out=x2);
+    Keyboard(out=x3);
+
+    Mux16(a=x1, b=x2, sel=screen, out=t1);
+    Mux16(a=t1, b=x3, sel=keyboard, out=out);
+}
