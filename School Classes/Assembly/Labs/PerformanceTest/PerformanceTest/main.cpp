@@ -22,7 +22,7 @@ void testFunction(){
 }
 
 //function to do a bunch of operations
-void longEvaluation(int n) {
+void fibonacci(int n) {
     //inefficient fibonacci calculator
 
     //var
@@ -35,7 +35,6 @@ void longEvaluation(int n) {
             t1 = t2;
             t2 = nextT;
         }
-
     }
     else if (n == 1) {
         cout << 0;
@@ -55,7 +54,7 @@ int main() {
 
     //local var
     auto start = getCurrentTime();
-    longEvaluation(2000);
+    fibonacci(2000);
     auto end = getCurrentTime();
 
     cout << "\nTime passed in microseconds: " << chrono::duration_cast<chrono::microseconds>(end - start).count() << endl << endl;
@@ -64,7 +63,7 @@ int main() {
 
     //local var
     auto start2 = getCurrentTime();
-    longEvaluation(2000000);
+    fibonacci(2000000);
     auto end2 = getCurrentTime();
 
     cout << "\nTime passed in microseconds: " << chrono::duration_cast<chrono::microseconds>(end2 - start2).count() << endl << endl;
