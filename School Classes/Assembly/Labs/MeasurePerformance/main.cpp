@@ -54,19 +54,19 @@ int main() {
 	auto start = getCurrentTime();
 	longEvaluation(2000);
 	auto end = getCurrentTime();
-	cout << "\nTime passed in nanoseconds: " << chrono::duration_cast<chrono::microseconds>(end - start).count() << endl << endl;
+	cout << "\nTime passed in microseconds: " << chrono::duration_cast<chrono::microseconds>(end - start).count() << endl << endl;
 
 	cout << "Testing the time it takes to calculate the n item of the Fibonacci sequence: 2000000\n";
 	auto start2 = getCurrentTime();
 	longEvaluation(2000000);
 	auto end2 = getCurrentTime();
-	cout << "\nTime passed in nanoseconds: " << chrono::duration_cast<chrono::microseconds>(end2 - start2).count() << endl << endl;
+	cout << "\nTime passed in microseconds: " << chrono::duration_cast<chrono::microseconds>(end2 - start2).count() << endl << endl;
 
 	cout << "\nMeasuring a test function:\n";
 	auto start3 = getCurrentTime();
 	test_function();
 	auto end3 = getCurrentTime();
-	cout << "\nTime passed in nanoseconds: " << chrono::duration_cast<chrono::microseconds>(end3 - start3).count() << endl << endl;
+	cout << "\nTime passed in microseconds: " << chrono::duration_cast<chrono::microseconds>(end3 - start3).count() << endl << endl;
 	
 
 	return 0;
