@@ -2,6 +2,7 @@
 //15 oct 2025
 //C++
 //assembly lab - create a program in any language that will test the performance of the computer - I have chosen C++
+//for this assignment, I tested on my Macbook and my powerful PC to compare
 
 #include <iostream>
 #include <chrono>
