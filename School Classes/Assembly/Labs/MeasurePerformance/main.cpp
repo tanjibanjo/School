@@ -13,6 +13,14 @@ auto getCurrentTime() {
 	return chrono::steady_clock::now();
 }
 
+void test_function() {
+	// Simulate some work
+	volatile int sum = 0;
+	for (int i = 0; i < 1000000; ++i) {
+		sum += i;
+	}
+}
+
 //function to do a bunch of operations
 void longEvaluation(int n) {
 	//inefficient fibonacci calculator
@@ -27,7 +35,6 @@ void longEvaluation(int n) {
 			t1 = t2;
 			t2 = nextT;
 		}
-		cout << nextT;
 	}
 	else if (n == 1) {
 		cout << 0;
@@ -41,15 +48,26 @@ void longEvaluation(int n) {
 }
 
 int main() {
-	cout << "Entering Program\n";
+	cout << "Entering Program\n\n";
 
-	//local var
+	cout << "Testing the time it takes to calculate the n item of the Fibonacci sequence: 2000\n";
 	auto start = getCurrentTime();
-	longEvaluation(200000);
+	longEvaluation(2000);
 	auto end = getCurrentTime();
+	cout << "\nTime passed in nanoseconds: " << chrono::duration_cast<chrono::microseconds>(end - start).count() << endl << endl;
 
-	cout << "\nTime Passed: " << chrono::duration_cast<chrono::microseconds>(end - start).count();
+	cout << "Testing the time it takes to calculate the n item of the Fibonacci sequence: 2000000\n";
+	auto start2 = getCurrentTime();
+	longEvaluation(2000000);
+	auto end2 = getCurrentTime();
+	cout << "\nTime passed in nanoseconds: " << chrono::duration_cast<chrono::microseconds>(end2 - start2).count() << endl << endl;
 
+	cout << "\nMeasuring a test function:\n";
+	auto start3 = getCurrentTime();
+	test_function();
+	auto end3 = getCurrentTime();
+	cout << "\nTime passed in nanoseconds: " << chrono::duration_cast<chrono::microseconds>(end3 - start3).count() << endl << endl;
+	
 
 	return 0;
 
