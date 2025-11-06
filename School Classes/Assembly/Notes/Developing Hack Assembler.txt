@@ -1,0 +1,25 @@
+// notes on making a hack assembler in any computer language - java, python, cpp?
+
+I. Contract
+
+	- develop HackAssembler program that translates assembly programs into binary code
+	- source code is a txt file named ___.asm
+	- generated code is a txt file named ___.hack
+	
+	- program should create or override a .hack file of the same name
+
+II. Design
+	// 4 software modules that stand alone and can be unit tested individually
+	
+	- Parser: unpacks each instruction into its underlying fields
+	- Code: translates each field into its corresponding binary value
+	- SymbolTable: manages the symbol table 
+	- Main: initializes the I/O files and drives the process
+
+	// classes? OOP for sure, then have objects of parser/code/table running in main
+
+III. Implementation
+	
+	- first, make an assembler that works without symbols
+	- develop ability to handle the symbols separately
+	- combine together
