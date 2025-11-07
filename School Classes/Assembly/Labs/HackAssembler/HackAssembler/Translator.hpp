@@ -26,9 +26,9 @@ public:
     Translator();
     
     //getters - take the dest Mnemonic and return the binary value in string
-    const string& getDest(const string& destMn);
-    const string& getComp(const string& compMn);
-    const string& getJump(const string& jumpMn);
+    string getDest(const string& destMn);
+    string getComp(const string& compMn);
+    string getJump(const string& jumpMn);
 };
 
 #endif /* Translator_hpp */

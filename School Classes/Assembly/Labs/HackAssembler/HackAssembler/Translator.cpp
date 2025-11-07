@@ -61,7 +61,7 @@ Translator::Translator(){
 }
 
 //implement the functions to return strings of the corresponding 
-const string& Translator::getComp(const string &compMn){
+string Translator::getComp(const string &compMn){
     if (compTable.find(compMn) != compTable.end()){
         return compTable[compMn];
     }
@@ -71,7 +71,7 @@ const string& Translator::getComp(const string &compMn){
     }
 }
 
-const string& Translator::getDest(const string &destMn){
+string Translator::getDest(const string &destMn){
     if (destTable.find(destMn) != destTable.end()){
         return destTable[destMn];
     }
@@ -81,7 +81,7 @@ const string& Translator::getDest(const string &destMn){
     }
 }
 
-const string& Translator::getJump(const string &jumpMn){
+string Translator::getJump(const string &jumpMn){
     if (jumpTable.find(jumpMn) != jumpTable.end()){
         return jumpTable[jumpMn];
     }

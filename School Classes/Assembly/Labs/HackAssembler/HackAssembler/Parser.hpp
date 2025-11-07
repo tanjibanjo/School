@@ -29,6 +29,9 @@ public:
     //constructor - will attempt to open file
     Parser(const string& fileName);
     
+    //destructor - closes fin
+    ~Parser();
+    
     //checks if there are more commands in the input
     bool hasMoreCommands();
     
@@ -39,16 +42,16 @@ public:
     char getCommand();
     
     //return the symbol or decimal in an A-type or L-type command
-    const string symbol();
+    string symbol();
     
     //return the dest mnemonic in current C-command
-    const string getDestMn();
+    string getDestMn();
     
     //return the comp mnemonic
-    const string getCompMn();
+    string getCompMn();
     
     //return the jump mnemonic
-    const string getJumpMn();
+    string getJumpMn();
     
     void setCommand(string command);
     

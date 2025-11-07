@@ -34,6 +34,11 @@ Parser::Parser(const string& fileName){
     
 }
 
+//destructor
+Parser::~Parser(){
+    fin.close();
+}
+
 //more commands check
 bool Parser::hasMoreCommands(){
     return !fin.eof(); //if at end of file, return false - has no more commands
@@ -46,12 +51,12 @@ void Parser::advance(unsigned long &lineNum){
     bool commandFound = false;
     
     //start to read lines
-    while (getline(fin, currentLine) && !commandFound){
+    while (!commandFound && getline(fin, currentLine)){
         //increment the line number in main, to keep track
         lineNum++;
         
         //ignore whitespace with erase_if
-        erase_if(currentLine, ::isspace);
+        currentLine.erase(remove_if(currentLine.begin(), currentLine.end(), ::isspace), currentLine.end());
         
         //remove the comments
         commentPos = currentLine.find("//");
@@ -60,18 +65,19 @@ void Parser::advance(unsigned long &lineNum){
         }
         
         //if line is not empty, there is a command
-        if (!currentLine.empty())
-            commandFound = true;
+        commandFound = !currentLine.empty();
+
         
     }//end while
-    
     command = currentLine;
+
 }
 
 //get the command type
 char Parser::getCommand(){
     if (commandTable.find(command[0]) != commandTable.end()){ //if command exists, return the type
         return commandTable[command[0]];
+        
     }
     
     //if program makes it this far, it doesn't exist
@@ -80,7 +86,7 @@ char Parser::getCommand(){
 }
 
 //returns the symbol or decimal xxx for A and L type commands
-const string Parser::symbol(){
+string Parser::symbol(){
     
     unsigned long openBracketPos = command.find('(');
     unsigned long closeBracketPos = command.find(')');
@@ -101,7 +107,7 @@ const string Parser::symbol(){
 }
 
 //return dest if exists
-const string Parser::getDestMn(){
+string Parser::getDestMn(){
     //check for a '=' to signal the dest in front
     unsigned long equalPos = command.find('=');
     
@@ -115,7 +121,7 @@ const string Parser::getDestMn(){
 }
 
 //return comp if exists
-const string Parser::getCompMn(){
+string Parser::getCompMn(){
     //check for equals and for a semicolon to signal comp
     unsigned long equalPos, semiPos;
     
@@ -143,7 +149,7 @@ const string Parser::getCompMn(){
 }
 
 //lastly, return jump if exists
-const string Parser::getJumpMn(){
+string Parser::getJumpMn(){
     unsigned long semiPos = command.find(';');
     
     if (semiPos != string::npos){
