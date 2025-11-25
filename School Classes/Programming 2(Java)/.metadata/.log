@@ -5214,3 +5214,29 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.
 
 !ENTRY ch.qos.logback.classic 1 0 2024-12-10 10:12:37.992
 !MESSAGE Logback config file: /Users/lanepollock/Documents/Programming 2/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.6.1.20240411-1122.xml
+!SESSION 2025-11-25 13:29:00.175 -----------------------------------------------
+eclipse.buildId=4.32.0.20240606-1231
+java.version=22.0.2
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/lanepollock/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/lanepollock/.eclipse_keyring -data /Users/lanepollock/Documents/Github/School/School Classes/Programming 2(Java)
+
+!ENTRY ch.qos.logback.classic 1 0 2025-11-25 13:29:03.478
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2025-11-25 13:29:05.676
+!MESSAGE Logback config file: /Users/lanepollock/Documents/Github/School/School Classes/Programming 2(Java)/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.6.1.20240411-1122.xml
+!SESSION 2025-11-25 13:32:04.873 -----------------------------------------------
+eclipse.buildId=4.32.0.20240606-1231
+java.version=22.0.2
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/lanepollock/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/lanepollock/.eclipse_keyring -data /Users/lanepollock/Documents/Github/School/School Classes/Programming 2(Java)
+
+!ENTRY ch.qos.logback.classic 1 0 2025-11-25 13:32:08.180
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2025-11-25 13:32:10.389
+!MESSAGE Logback config file: /Users/lanepollock/Documents/Github/School/School Classes/Programming 2(Java)/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.6.1.20240411-1122.xml

@@ -1,9 +1,0 @@
-package lab2;
-
-public class ProtorypeDriver {
-	public static void main(String[] args) {
-		//load cache
-		CharacterStore.loadCache();
-	}
-
-}
