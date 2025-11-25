@@ -13,7 +13,7 @@ public class Main {
 	//main
 	public static void main(String[] args) {
 		//File inFile = new File(args[0]);
-		File inFile = new File("SimpleAdd.vm");
+		File inFile = new File("PointerTest.vm");
 		
 		codeWriter = new CodeWriter(inFile); //create new writer with the input file given
 		if(inFile.isDirectory() ) { //if the file is a directory, search then translate
