@@ -1,3 +1,8 @@
+//lane pollock
+//project 7 for assembly
+//build a vm - I'm using java in this case
+//main 
+
 package vmtranslator;
 
 //imports
