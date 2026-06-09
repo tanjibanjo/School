@@ -1,0 +1,47 @@
+//lp
+
+
+DESCRIPTION
+-----------
+
+the game is a horde wave fps. it is set in a post-apocalyptic, overgrown cityscape area. you are armed with a basic pistol, and through the game will be able to access a shotgun as well (maybe more, but for now that's all i can guarantee). you use these to defend yourself from grotesque monsters that are coming to kill you.
+
+you are a journalist - a truth seeker. you are in the no man's land. there are people that live here and have nowhere to go. there are stories to tell. your job is to type and send off these stories while defending yourself. the gameplay is a balance of ammo and time management using what little there is to type as fast as you can. learn more about the zone and it's inhabitants throughout the game. don't die.
+
+GAMEPLAY
+--------
+
+typing minigame 
+	- camera shift to close to the typewriter/computer (whatever model i can find)
+	- words pop up on screen, grey color, the current letter is highlighted
+	- as you type, the letters move forward	
+	- if you mess up, scrap the letter?
+	- tab probably to go back to character view, camera transition back out
+
+gunplay and player controls
+	- start with a pistol
+	- decent ammo, enemies should also drop ammo and letters!
+	- letters you pick up from the enemies, but the options for the content are controlled separately
+	- need letters to do the typing minigame
+	- walk, maybe run, shoot, reload, no jump, no crouch
+
+why do letters?
+	- get rewards from your benefactors when you send out letters
+	- gun upgrades, health, or access to the shotgun
+		- maybe if you do a certain # of letters correct in a row?
+		- maybe just random
+
+win/lose
+	- you lose in death
+	- should you be able to win? or maybe just gather high score and have that save
+	- maybe there's a lose win by completing all the content like getting shotgun and stuff, 
+		but then still just high score 
+
+setting
+	- abandon cityscape area, with industrial concrete feel
+	- one area for the whole game
+	- there is a building/hut/place where the player has set up the typing station 
+	- green and grey color palette in game
+	- pixelated filter****
+
+
